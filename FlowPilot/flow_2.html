@@ -1,0 +1,92 @@
+<html>
+<head>
+<style type="text/css">
+img {
+  position: absolute;
+  transition: opacity 0.2s ease-out;
+  opacity: 1;
+}
+
+img.portrait {
+  width: 150px;
+}
+
+img.landscape {
+  height: 150px;
+}
+
+img.hidden {
+  opacity: 0;
+}
+
+</style>
+<script type="text/javascript">
+const images = [
+  [ '../DummyGraphics/Beachen.png', 2865 / 1852 ],
+  [ '../DummyGraphics/Bycycle.png', 2987 / 1920 ],
+  [ '../DummyGraphics/Canoeing1.png', 3985 / 2533 ],
+  [ '../DummyGraphics/Canoeing2.png', 4213 / 2556 ],
+  [ '../DummyGraphics/Divers.png', 4103 / 2517 ],
+  [ '../DummyGraphics/Havslandskap.png', 3299 / 1414],
+  [ '../DummyGraphics/Kayaking.png', 3625 / 1637 ],
+  [ '../DummyGraphics/Sailboat.png', 4173 / 1946 ],
+  [ '../DummyGraphics/Skatare.png', 3433 / 1949 ],
+  [ '../DummyGraphics/Snorkeling1.png', 3496 / 2480 ],
+  [ '../DummyGraphics/Snorkeling2.png', 3044 / 1979 ],
+  [ '../DummyGraphics/StandPaddel.png', 2215 / 2052 ],
+  [ '../DummyGraphics/Surfare.png', 2538 / 3935 ],
+  [ '../DummyGraphics/WaveSurfer.png', 4189 / 2542 ],
+]
+const NUM_IMAGES = images.length
+const grid = {}
+
+setInterval(async () => {
+  const [ image, ratio ] = randomImage()
+  const [ width, height ] = ratio < 1
+    ? [ 2, Math.ceil(2 / ratio) ]
+    : [ Math.ceil(ratio * 2), 2 ]
+  const [ x, y ] = [ randomInt(20), randomInt(10) ]
+
+  const elements = []
+  for (let x0 = 0; x0 < width; x0++)
+    for (let y0 = 0; y0 < width; y0++) {
+      const existing = grid[`${x + x0},${y + y0}`]
+      
+      if (existing) {
+        const [ x0, y0, element ] = existing
+        delete grid[`${x0},${y0}`]
+        element.className += ' hidden'
+        elements.push(element)
+      }
+    }
+  
+  const element = createImgElement()
+  element.src = image
+  element.style.left = `${x * 75}px`
+  element.style.top = `${y * 75}px`
+  if (ratio < 1) element.className = 'portrait hidden'
+  else element.className = 'landscape hidden'
+  document.body.appendChild(element)
+
+  for (let x0 = 0; x0 < width; x0++)
+    for (let y0 = 0; y0 < width; y0++)
+      grid[`${x + x0},${y + y0}`] = [x, y, element]
+
+  await delay(200)
+  if (ratio < 1) element.className = 'portrait'
+  else element.className = 'landscape'
+
+  for (const el of elements)
+    el.remove()
+}, 2000)
+
+const createImgElement = () => document.createElement('img')
+const randomImage = () => images[randomInt(NUM_IMAGES)]
+const randomInt = (max) => Math.floor(Math.random() * max)
+const delay = (millis) => new Promise(resolve => { setTimeout(resolve, millis); })
+</script>
+</head>
+<body>
+  
+</body>
+</html>
