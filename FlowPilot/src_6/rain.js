@@ -107,17 +107,9 @@ function appendImageElement() {
 }
 
 function createElement(image) {
-  const imgElement = createImgElement()
-  imgElement.src = image.src
-  imgElement.className = image.width < image.height ? 'rain portrait hidden' : 'rain landscape hidden'
-
-  const h1Element = document.createElement('h1')
-  h1Element.textContent = 'Bondi Beach'
-
-  const element = document.createElement('div')
-  element.className = 'img'
-  element.appendChild(imgElement)
-  element.appendChild(h1Element)
+  let element = createImgElement()
+  element.src = image.src
+  element.className = image.width < image.height ? 'rain portrait hidden' : 'rain landscape hidden'
   return element
 }
 

@@ -1,55 +1,20 @@
-.img {
+img {
   position: absolute;
   transition: opacity 0.6s ease-out,
-              bottom 2s ease-out,
+              top 2s ease-out,
               left 2s ease-out;
   opacity: 1;
 }
 
-.img.top {
-  bottom: 110vh;
-  opacity: 0;
-}
-
-.img.center {
-  bottom: 47vh;
-}
-
-.img.selected {
-  top: auto;
-  bottom: 2vh;
-  width: 75vw;
-  height: 75vh;
-  background-color: silver;
-  border-radius: 60px;
-  bottom: 12vh;
-}
-
-.img.selected h1 {
-  float: right;
-  margin-right: 50px;
-}
-
-.img.selected img {
-  position: absolute;
-  bottom: 0;
-  height: 100%;
-}
-
-.img.dismissed {
-  bottom: -50vh;
-  opacity: 0;
-}
-
-.img img.portrait {
+img.portrait {
   width: 250px;
 }
 
-.img img.landscape {
+img.landscape {
   height: 250px;
 }
 
-.img.hidden {
+img.hidden {
   opacity: 0;
 }
 

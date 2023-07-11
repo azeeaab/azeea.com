@@ -11,27 +11,30 @@ class FallingImageElement {
   positionAtTop() {
     if (this.isDismissed) return
 
-    this.element.className = 'img top'
+    this.element.style.top = '-2vh'
     this.element.style.left = `${600 + randomInt(innerWidth - 850)}px`
+    this.element.style.opacity = '0'
   }
 
   async positionInCenter() {
     if (this.isDismissed) return
 
-    this.element.className = 'img center'
-    this.element.style.left = '15vw'
+    this.element.style.top = '47vh'
+    this.element.style.opacity = '1'
     await delay(IMAGE_POSITION_TIME)
   }
   
   async positionAsSelected() {
-    this.element.className = 'img selected'
+    this.element.style.top = '75vh'
+    this.element.style.left = '15vw'
     await delay(IMAGE_POSITION_TIME)
   }
-  
+
   async dismiss() {
     this.isDismissed = true
-    this.element.className = 'img dismissed'
     this.element.onmousedown = null
+    this.element.style.top = '150vh'
+    this.element.style.opacity = '0'
     await delay(IMAGE_POSITION_TIME)
     this.element.remove()
   }
