@@ -1,7 +1,14 @@
 setTimeout(() => setSelectedAvatar('A'), 10)
 
 function setSelectedAvatar(id) {
-  const video = document.getElementsByTagName('video')[0]
+  const videos = [ ...document.getElementsByTagName('video') ]
+  for (const vid of videos) {
+    vid.style.display = 'none'
+    vid.pause()
+  }
+
+  const video = document.getElementById(`video_${id}`)
+  video.style.display = ''
   video.loop = true
   video.play()
 
