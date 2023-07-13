@@ -22,9 +22,18 @@ function setSelectedAvatar(id) {
 
 setTimeout(() => {
   const videoConfig = {
-    'A': { endTime: 15 },
-    'B': { endTime: 15 },
-    'C': { endTime: 28 },
+    'A': {
+      endTime: 15,
+      pinImage: 'Basketball pin.png'
+    },
+    'B': {
+      endTime: 15,
+      pinImage: 'Tennis pin.png'
+    },
+    'C': {
+      endTime: 28,
+      pinImage: 'Basketball pin.png'
+    },
   }
 
   for (const [vc, cfg] of Object.entries(videoConfig)) {
@@ -33,6 +42,7 @@ setTimeout(() => {
     video.addEventListener('timeupdate', e => {
       if (video.currentTime > cfg.endTime) {
         document.getElementById('geo-pin').style.display = ''
+        document.getElementById('geo-pin__pin').src = cfg.pinImage
         video.pause()
         setTimeout(up, 1)
       }
