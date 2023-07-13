@@ -1,28 +1,50 @@
 setTimeout(() => setSelectedAvatar('A'), 10)
 
 function setSelectedAvatar(id) {
+  document.getElementById('geo-pin').style.display = 'none'
+
   const videos = [ ...document.getElementsByTagName('video') ]
   for (const vid of videos) {
     vid.style.display = 'none'
     vid.pause()
   }
 
-  const video = document.getElementById(`video_${id}`)
+  const video = document.getElementById(`video_${id}`) // as HTMLVideoElement
   video.style.display = ''
-  video.loop = true
-  video.play()
+  playFromBeginning(video)
 
   const avatars = [...document.getElementsByClassName('avatar')]
     .filter(el => el.tagName.toLowerCase() === 'img')
   for (const avatar of avatars) avatar.style.display = ''
 
   document.getElementById(id).style.display = 'revert'
-
-  console.log('travel...')
-  travel()
 }
 
-setTimeout(up, 10)
+setTimeout(() => {
+  const videoConfig = {
+    'A': { endTime: 15 },
+    'B': { endTime: 15 },
+    'C': { endTime: 28 },
+  }
+
+  for (const [vc, cfg] of Object.entries(videoConfig)) {
+    const video = document.getElementById(`video_${vc}`)
+
+    video.addEventListener('timeupdate', e => {
+      if (video.currentTime > cfg.endTime) {
+        document.getElementById('geo-pin').style.display = ''
+        video.pause()
+        setTimeout(up, 1)
+      }
+    }, false);
+  }
+}, 10)
+
+/** @param {HTMLVideoElement} video */
+function playFromBeginning(video) {
+  video.currentTime = 0
+  video.play()
+}
 
 function up() {
   document.getElementById('geo-pin__pin').className = 'up'
@@ -34,16 +56,6 @@ function down() {
   document.getElementById('geo-pin__pin').className = 'down'
   document.getElementById('geo-pin__shadow').className = 'down'
   setTimeout(up, 1000)
-}
-
-async function travel() {
-  const pin = document.getElementById('geo-pin')
-  pin.className = 'far'
-  pin.style.display = ''
-  await delay(0)
-  pin.className = 'near'
-  await delay(2000)
-  // pin.style.display = 'none'
 }
 
 function delay(millis) { return new Promise(resolve => { setTimeout(resolve, millis); }) }
