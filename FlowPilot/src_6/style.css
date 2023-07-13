@@ -76,6 +76,36 @@ video {
   transform: scale(20%);
 }
 
+#geo-pin__A,
+#geo-pin__B,
+#geo-pin__C {
+  display: none;
+}
+
+#geo-pin.A #geo-pin__A,
+#geo-pin.B #geo-pin__B,
+#geo-pin.C #geo-pin__C {
+  display: initial;
+}
+
+#geo-pin__A {
+  left: -50%;
+  bottom: -10px;
+  height: 200px;
+}
+
+#geo-pin__B {
+  height: 200px;
+  bottom: -10px;
+  transform: translateX(-32%);
+}
+
+#geo-pin__C {
+  bottom: -10px;
+  height: 100px;
+  transform: translateX(-35%);
+}
+
 #geo-pin__pin {
   position: absolute;
   width: 30px;

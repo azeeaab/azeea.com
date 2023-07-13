@@ -24,7 +24,7 @@ setTimeout(() => {
   const videoConfig = {
     'A': {
       endTime: 15,
-      pinImage: 'Basketball pin.png'
+      pinImage: 'SurfinBoard pin.png'
     },
     'B': {
       endTime: 15,
@@ -42,7 +42,8 @@ setTimeout(() => {
     video.addEventListener('timeupdate', e => {
       if (video.currentTime > cfg.endTime) {
         document.getElementById('geo-pin').style.display = ''
-        document.getElementById('geo-pin__pin').src = cfg.pinImage
+        document.getElementById('geo-pin').className = vc
+        // document.getElementById('geo-pin__pin').src = cfg.pinImage
         video.pause()
         setTimeout(up, 1)
       }
