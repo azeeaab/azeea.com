@@ -57,11 +57,30 @@ const images = [
     height: 2542,
   }
 ]
-const NUM_IMAGES = images.length
+const flows = {
+  A: [
+    images[0],
+    images[12],
+    images[13],
+  ],
+  B: [
+    images[5],
+    images[6],
+    images[2],
+  ],
+  C: [
+    images[4],
+    images[7],
+    images[9],
+  ]
+}
 
 let selectedImage = null
 const fallingImages = []
 setTimeout(displayNextImage, 10)
+
+var flowName
+function selectFlow(name) { flowName = name }
 
 async function displayNextImage() {
   // Calling itself in a setTimeout works sort-of like
@@ -122,7 +141,11 @@ async function dismissImage(element) {
     element.remove()
 }
 
+function randomImage() {
+  const flow = (flowName && flows[flowName]) ?? images
+  return flow[randomInt(flow.length)]
+}
+
 function createImgElement() { return document.createElement('img') }
-function randomImage() { return images[randomInt(NUM_IMAGES)] }
 function randomInt(max) { return Math.floor(Math.random() * max) }
 function delay(millis) { return new Promise(resolve => { setTimeout(resolve, millis); }) }

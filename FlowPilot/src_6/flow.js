@@ -1,6 +1,7 @@
 setTimeout(() => setSelectedAvatar('A'), 10)
 
 function setSelectedAvatar(id) {
+  selectFlow(id)
   document.getElementById('geo-pin').style.display = 'none'
 
   const videos = [ ...document.getElementsByTagName('video') ]
