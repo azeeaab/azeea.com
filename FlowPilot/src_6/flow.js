@@ -14,6 +14,9 @@ function setSelectedAvatar(id) {
   video.style.display = ''
   playFromBeginning(video)
 
+  const audio = document.getElementById('audio') // as HTMLAudioElement
+  audio.play()
+
   const avatars = [...document.getElementsByClassName('avatar')]
     .filter(el => el.tagName.toLowerCase() === 'img')
   for (const avatar of avatars) avatar.style.display = ''
