@@ -110,13 +110,13 @@ video {
   position: absolute;
   width: 30px;
   transform: translate(-50%, 0);
-  transition: top 1.5s ease-in-out;
+  transition: top 1s ease-in-out;
 }
 #geo-pin__pin.up {
   top: -65px
 }
 #geo-pin__pin.down {
-  top: -50px
+  top: -25px
 }
 
 #geo-pin__spot {

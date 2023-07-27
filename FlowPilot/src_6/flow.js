@@ -49,7 +49,6 @@ setTimeout(() => {
         document.getElementById('geo-pin').className = vc
         // document.getElementById('geo-pin__pin').src = cfg.pinImage
         video.pause()
-        setTimeout(up, 1)
       }
     }, false);
   }
@@ -61,16 +60,14 @@ function playFromBeginning(video) {
   video.play()
 }
 
-function up() {
-  document.getElementById('geo-pin__pin').className = 'up'
-  document.getElementById('geo-pin__shadow').className = 'up'
-  setTimeout(down, 1000)
-}
-
-function down() {
-  document.getElementById('geo-pin__pin').className = 'down'
-  document.getElementById('geo-pin__shadow').className = 'down'
-  setTimeout(up, 1000)
-}
-
 function delay(millis) { return new Promise(resolve => { setTimeout(resolve, millis); }) }
+
+
+setInterval(function bounce_pin() {
+  const pin = document.getElementById('geo-pin__pin')
+  const shadow = document.getElementById('geo-pin__shadow')
+
+  const direction = pin.className == 'down' ? 'up' : 'down'
+  pin.className = direction
+  shadow.className = direction
+}, 1000)
