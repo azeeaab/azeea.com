@@ -1,5 +1,5 @@
-const minX = 7
-const maxX = 490
+const minX = 24
+const maxX = 473
 const tabHalfWidth = 2.5
 
 var lastMouseDownCoords
@@ -19,7 +19,6 @@ function dragSliderTab(e) {
 
 function stopDragSliderTab(e) {
   lastMouseDownCoords = null
-  console.log('stopDragSliderTab', e)
   e.target.releasePointerCapture(e.pointerId)
 }
 

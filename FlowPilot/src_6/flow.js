@@ -1,4 +1,21 @@
-setTimeout(() => setSelectedAvatar('A'), 10)
+setTimeout(() => {
+  setSelectedAvatar('A')
+  selectTab(0)
+}, 10)
+
+function selectTab(num) {
+  const targetTab = sliderBackground().getElementsByClassName(`${selectedFlow()}${num}`)[0]
+  const isSelected = targetTab.style.display == 'initial'
+
+  for (const slider of sliderBackground().getElementsByClassName('slider')) {
+    slider.style.display = 'none'
+  }
+
+  const tabToDisplay = isSelected
+    ? sliderBackground().getElementsByClassName(`${selectedFlow()}0`)[0]
+    : targetTab
+  tabToDisplay.style.display = 'initial'
+}
 
 function setSelectedAvatar(id) {
   selectFlow(id)

@@ -55,20 +55,46 @@ button.avatar.C {
   top: 140px;
 }
 
+#slider button {
+  position: absolute;
+  background-color: transparent;
+  top: 30px;
+  height: 33px;
+}
+
+#slider button:hover {
+  border: none;
+}
+
+#slider button._1 {
+  left: 0;
+  width: 175px;
+}
+#slider button._2 {
+  left: 175px;
+  width: 175px;
+}
+#slider button._3 {
+  left: 350px;
+  width: 150px;
+}
+
 video {
   max-height: 99vh;
   max-width: 99vw;
 }
 
 #slider {
-  background-color: silver;
   position: relative;
   height: 30px;
   width: 500px;
-  border-radius: 5px;
-  border: 1px solid brown;
   top: 700px;
   left: 650px;
+}
+
+#slider .slider {
+  max-width: 100%;
+  display: none;
 }
 
 #slider .tab {

@@ -9,7 +9,15 @@
 <body style="background-color: darkslateblue;">
 
   <div id="slider">
+    <img id="slider-A0" class="slider A0" src="./Graphics/slider-A0.png">
+    <img id="slider-A1" class="slider A1" src="./Graphics/slider-A1.png">
+    <img id="slider-A2" class="slider A2" src="./Graphics/slider-A2.png">
+    <img id="slider-A3" class="slider A3" src="./Graphics/slider-A3.png">
     <div class="tab" onpointerdown="startDragSliderTab(event)" onpointerup="stopDragSliderTab(event)" onpointermove="dragSliderTab(event)"></div>
+
+    <button onclick="selectTab(1)" class="_1"></button>
+    <button onclick="selectTab(2)" class="_2"></button>
+    <button onclick="selectTab(3)" class="_3"></button>
   </div>
 
   <img id="A" class="avatar A" src="./AzeaFavatar.png">

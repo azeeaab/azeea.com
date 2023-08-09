@@ -80,6 +80,7 @@ const fallingImages = []
 setTimeout(displayNextImage, 10)
 
 var flowName
+function selectedFlow() { return flowName }
 function selectFlow(name) { flowName = name }
 
 async function displayNextImage() {
