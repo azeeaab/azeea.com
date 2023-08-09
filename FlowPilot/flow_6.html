@@ -2,10 +2,16 @@
 <head>
   <link rel="stylesheet" type="text/css" href="src_6/style.css">
   <script type="text/javascript" src="src_6/flow.js"></script>
+  <script type="text/javascript" src="src_6/slider.js"></script>
   <script type="text/javascript" src="src_6/rain.js"></script>
   <script type="text/javascript" src="src_6/falling-image.js"></script>
 </head>
 <body style="background-color: darkslateblue;">
+
+  <div id="slider">
+    <div class="tab" onpointerdown="startDragSliderTab(event)" onpointerup="stopDragSliderTab(event)" onpointermove="dragSliderTab(event)"></div>
+  </div>
+
   <img id="A" class="avatar A" src="./AzeaFavatar.png">
   <img id="B" class="avatar B" src="./AzeaBavatar2.png">
   <img id="C" class="avatar B" src="./AzeaCavatar.png">
