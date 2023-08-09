@@ -106,6 +106,7 @@ video {
   width: 500px;
   top: 500px;
   left: 650px;
+  z-index: 1;
 }
 
 #slider .slider {
