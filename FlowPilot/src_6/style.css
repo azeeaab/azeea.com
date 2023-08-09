@@ -21,9 +21,13 @@ img.hidden {
 img.avatar {
   position: fixed;
   display: none;
-  width: 600px;
+  width: 555px;
   top: 0;
   left: 0;
+}
+
+img.avatar.A {
+  width: 600px;
 }
 
 button {
