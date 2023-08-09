@@ -89,6 +89,12 @@ button.avatar.C {
   width: 40px;
 }
 
+.search.main {
+  top: 70px;
+  left: 0;
+  width: 450px;
+}
+
 video {
   max-height: 99vh;
   max-width: 99vw;

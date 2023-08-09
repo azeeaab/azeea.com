@@ -37,11 +37,13 @@ function tab() {
 function displaySearch() {
   searchSButton().style.display = 'none'
   searchXButton().style.display = 'initial'
+  searchMainArea().style.display = 'initial'
 }
 
 function hideSearch() {
   searchSButton().style.display = 'initial'
   searchXButton().style.display = 'none'
+  searchMainArea().style.display = 'none'
 }
 
 function searchSButton() {
@@ -50,4 +52,8 @@ function searchSButton() {
 
 function searchXButton() {
   return document.getElementById('search-x')
+}
+
+function searchMainArea() {
+  return document.getElementById('search')
 }
