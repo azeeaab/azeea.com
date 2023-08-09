@@ -1,6 +1,7 @@
 setTimeout(() => {
   setSelectedAvatar('A')
   selectTab(0)
+  hideSearch()
 }, 10)
 
 function selectTab(num) {

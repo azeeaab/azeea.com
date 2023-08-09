@@ -33,3 +33,21 @@ function sliderBoundingRect() {
 function tab() {
   return sliderBackground().getElementsByClassName('tab')[0]
 }
+
+function displaySearch() {
+  searchSButton().style.display = 'none'
+  searchXButton().style.display = 'initial'
+}
+
+function hideSearch() {
+  searchSButton().style.display = 'initial'
+  searchXButton().style.display = 'none'
+}
+
+function searchSButton() {
+  return document.getElementById('search-s')
+}
+
+function searchXButton() {
+  return document.getElementById('search-x')
+}
