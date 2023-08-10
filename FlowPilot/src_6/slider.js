@@ -25,7 +25,7 @@ function stopDragSliderTab(e) {
 }
 
 function sliderBackground() {
-  return document.getElementById('slider')
+  return document.getElementById(`slider-${selectedFlow()}`)
 }
 
 function sliderBoundingRect() {
@@ -36,8 +36,25 @@ function tab() {
   return sliderBackground().getElementsByClassName('tab')[0]
 }
 
-// TODO: Also: Switch all buttons/images when switching avatar
-// TODO: Refactor where state is stored
+function selectTab(num) {
+  for (const slider of document.getElementsByClassName('bww')) {
+    slider.style.display = 'none'
+  }
+
+  sliderBackground().style.display = 'block'
+
+  const targetTab = sliderBackground().getElementsByClassName(`${selectedFlow()}${num}`)[0]
+  const isSelected = targetTab.style.display == 'initial'
+
+  for (const slider of sliderBackground().getElementsByClassName('slider')) {
+    slider.style.display = 'none'
+  }
+
+  const tabToDisplay = isSelected
+    ? sliderBackground().getElementsByClassName(`${selectedFlow()}0`)[0]
+    : targetTab
+  tabToDisplay.style.display = 'initial'
+}
 
 function displaySearch() {
   searchSButton().style.display = 'none'
@@ -52,13 +69,13 @@ function hideSearch() {
 }
 
 function searchSButton() {
-  return document.getElementById('search-s')
+  return document.getElementById(`search-s-${selectedFlow()}`)
 }
 
 function searchXButton() {
-  return document.getElementById('search-x')
+  return document.getElementById(`search-x-${selectedFlow()}`)
 }
 
 function searchMainArea() {
-  return document.getElementById('search')
+  return document.getElementById(`search-${selectedFlow()}`)
 }

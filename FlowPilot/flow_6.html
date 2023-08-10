@@ -8,15 +8,39 @@
 </head>
 <body style="background-color: darkslateblue;">
 
-  <div id="slider">
+  <div id="slider-A" class="bww">
     <img id="slider-A0" class="slider A0" src="./Graphics/slider-A0.png">
     <img id="slider-A1" class="slider A1" src="./Graphics/slider-A1.png">
     <img id="slider-A2" class="slider A2" src="./Graphics/slider-A2.png">
     <img id="slider-A3" class="slider A3" src="./Graphics/slider-A3.png">
+    <div class="tab" onpointerdown="startDragSliderTab(event)" onpointerup="stopDragSliderTab(event)" onpointermove="dragSliderTab(event)"></div>
+
+    <button onclick="selectTab(1)" class="_1"></button>
+    <button onclick="selectTab(2)" class="_2"></button>
+    <button onclick="selectTab(3)" class="_3"></button>
+
+    <img id="search-s-A" class="search button" src="./Graphics/search-s.png" onclick="displaySearch()">
+    <img id="search-x-A" class="search button" src="./Graphics/search-x.png" onclick="hideSearch()">
+    <img id="search-A" class="search main" src="./Graphics/Search.png">
+  </div>
+
+  <div id="slider-B" class="bww">
     <img id="slider-B0" class="slider B0" src="./Graphics/slider-B0.png">
     <img id="slider-B1" class="slider B1" src="./Graphics/slider-B1.png">
     <img id="slider-B2" class="slider B2" src="./Graphics/slider-B2.png">
     <img id="slider-B3" class="slider B3" src="./Graphics/slider-B3.png">
+    <div class="tab" onpointerdown="startDragSliderTab(event)" onpointerup="stopDragSliderTab(event)" onpointermove="dragSliderTab(event)"></div>
+
+    <button onclick="selectTab(1)" class="_1"></button>
+    <button onclick="selectTab(2)" class="_2"></button>
+    <button onclick="selectTab(3)" class="_3"></button>
+
+    <img id="search-s-B" class="search button" src="./Graphics/search-s B.png" onclick="displaySearch()">
+    <img id="search-x-B" class="search button" src="./Graphics/search-x B.png" onclick="hideSearch()">
+    <img id="search-B" class="search main" src="./Graphics/Search B.png">
+  </div>
+
+  <div id="slider-C" class="bww">
     <img id="slider-C0" class="slider C0" src="./Graphics/slider-C0.png">
     <img id="slider-C1" class="slider C1" src="./Graphics/slider-C1.png">
     <img id="slider-C2" class="slider C2" src="./Graphics/slider-C2.png">
@@ -27,9 +51,9 @@
     <button onclick="selectTab(2)" class="_2"></button>
     <button onclick="selectTab(3)" class="_3"></button>
 
-    <img id="search-s" class="search button" src="./Graphics/search-s.png" onclick="displaySearch()">
-    <img id="search-x" class="search button" src="./Graphics/search-x.png" onclick="hideSearch()">
-    <img id="search" class="search main" src="./Graphics/Search.png">
+    <img id="search-s-C" class="search button" src="./Graphics/search-s C.png" onclick="displaySearch()">
+    <img id="search-x-C" class="search button" src="./Graphics/search-x-C.png" onclick="hideSearch()">
+    <img id="search-C" class="search main" src="./Graphics/Search C.png">
   </div>
 
   <img id="A" class="avatar A" src="./Avatar A.png">

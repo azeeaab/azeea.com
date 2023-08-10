@@ -1,25 +1,11 @@
 setTimeout(() => {
   setSelectedAvatar('A')
-  selectTab(0)
   hideSearch()
 }, 10)
 
-function selectTab(num) {
-  const targetTab = sliderBackground().getElementsByClassName(`${selectedFlow()}${num}`)[0]
-  const isSelected = targetTab.style.display == 'initial'
-
-  for (const slider of sliderBackground().getElementsByClassName('slider')) {
-    slider.style.display = 'none'
-  }
-
-  const tabToDisplay = isSelected
-    ? sliderBackground().getElementsByClassName(`${selectedFlow()}0`)[0]
-    : targetTab
-  tabToDisplay.style.display = 'initial'
-}
-
 function setSelectedAvatar(id) {
   selectFlow(id)
+  selectTab(0)
   document.getElementById('geo-pin').style.display = 'none'
 
   const videos = [ ...document.getElementsByTagName('video') ]

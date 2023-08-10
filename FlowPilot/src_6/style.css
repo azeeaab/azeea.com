@@ -59,26 +59,26 @@ button.avatar.C {
   top: 140px;
 }
 
-#slider button {
+.bww button {
   position: absolute;
   background-color: transparent;
   top: 30px;
   height: 33px;
 }
 
-#slider button:hover {
+.bww button:hover {
   border: none;
 }
 
-#slider button._1 {
+.bww button._1 {
   left: 0;
   width: 175px;
 }
-#slider button._2 {
+.bww button._2 {
   left: 175px;
   width: 175px;
 }
-#slider button._3 {
+.bww button._3 {
   left: 350px;
   width: 150px;
 }
@@ -100,21 +100,22 @@ video {
   max-width: 99vw;
 }
 
-#slider {
+.bww {
   position: relative;
   height: 30px;
   width: 500px;
   top: 500px;
   left: 650px;
+  display: none;
   z-index: 1;
 }
 
-#slider .slider {
+.bww .slider {
   max-width: 100%;
   display: none;
 }
 
-#slider .tab {
+.bww .tab {
   background-color: pink;
   position: absolute;
   top: 1px;
