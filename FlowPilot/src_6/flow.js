@@ -1,3 +1,18 @@
+const videoConfig = {
+  'A': {
+    endTime: 15,
+    pinImage: 'SurfinBoard pin.png',
+  },
+  'B': {
+    endTime: 15,
+    pinImage: 'Tennis pin.png',
+  },
+  'C': {
+    endTime: 28,
+    pinImage: 'Basketball pin.png',
+  },
+}
+
 setTimeout(() => {
   setSelectedAvatar('A')
   hideSearch()
@@ -29,30 +44,23 @@ function setSelectedAvatar(id) {
 }
 
 setTimeout(() => {
-  const videoConfig = {
-    'A': {
-      endTime: 15,
-      pinImage: 'SurfinBoard pin.png'
-    },
-    'B': {
-      endTime: 15,
-      pinImage: 'Tennis pin.png'
-    },
-    'C': {
-      endTime: 28,
-      pinImage: 'Basketball pin.png'
-    },
-  }
-
   for (const [vc, cfg] of Object.entries(videoConfig)) {
     const video = document.getElementById(`video_${vc}`)
 
     video.addEventListener('timeupdate', e => {
       if (video.currentTime > cfg.endTime) {
-        document.getElementById('geo-pin').style.display = ''
-        document.getElementById('geo-pin').className = vc
-        // document.getElementById('geo-pin__pin').src = cfg.pinImage
+        const pin = document.getElementById('geo-pin')
+        pin.style.display = ''
+        pin.className = vc
         video.pause()
+
+        for (const friend of pin.getElementsByClassName('friend')) {
+          friend.style.display = 'none'
+        }
+
+        for (const friend of pin.getElementsByClassName(`friend ${selectedFlow()}`)) {
+          friend.style.display = ''
+        }
       }
     }, false);
   }
