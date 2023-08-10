@@ -63,19 +63,19 @@ function displaySearch() {
 }
 
 function hideSearch() {
-  searchSButton().style.display = 'initial'
-  searchXButton().style.display = 'none'
-  searchMainArea().style.display = 'none'
+  searchSButton().style.display = ''
+  searchXButton().style.display = ''
+  searchMainArea().style.display = ''
 }
 
 function searchSButton() {
-  return document.getElementById(`search-s-${selectedFlow()}`)
+  return sliderBackground().getElementsByClassName('button s')[0]
 }
 
 function searchXButton() {
-  return document.getElementById(`search-x-${selectedFlow()}`)
+  return sliderBackground().getElementsByClassName('button x')[0]
 }
 
 function searchMainArea() {
-  return document.getElementById(`search-${selectedFlow()}`)
+  return sliderBackground().getElementsByClassName('main')[0]
 }

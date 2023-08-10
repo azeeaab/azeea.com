@@ -83,16 +83,21 @@ button.avatar.C {
   width: 150px;
 }
 
-.search.button {
+.bww .search.button {
   top: 70px;
   right: 0;
   width: 40px;
 }
 
-.search.main {
+.bww .main {
   top: 70px;
   left: 0;
   width: 450px;
+  display: none;
+}
+
+.bww .search.button.x {
+  display: none;
 }
 
 video {
