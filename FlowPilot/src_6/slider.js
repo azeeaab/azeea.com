@@ -34,6 +34,11 @@ function tab() {
   return sliderBackground().getElementsByClassName('tab')[0]
 }
 
+// TODO: There should be 3 of each button and main area (A, B, C)
+// TODO: Also: Switch all buttons/images when switching avatar
+// TODO: Refactor where state is stored
+// TODO: Does not work on Edge...? Replace <video> with an <img>?
+
 function displaySearch() {
   searchSButton().style.display = 'none'
   searchXButton().style.display = 'initial'
