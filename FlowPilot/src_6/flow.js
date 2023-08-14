@@ -21,27 +21,26 @@ setTimeout(() => {
 function setSelectedAvatar(id) {
   selectFlow(id)
   selectTab(0)
-  DOMElement.id('geo-pin').element.style.display = 'none'
+  DOMElement.id('geo-pin').setDisplay(DisplayMode.none)
 
-  const videos = [ ...document.getElementsByTagName('video') ]
+  const videos = DOMElement.tagName('video')
   for (const vid of videos) {
-    vid.style.display = 'none'
-    vid.pause()
+    vid.setDisplay(DisplayMode.none)
+    vid.element.pause()
   }
 
-  const video = DOMElement.id(`video_${id}`).element
-  video.style.display = ''
-  playFromBeginning(video)
+  const video = DOMElement.id(`video_${id}`)
+  video.setDisplay(DisplayMode.unset)
+  playFromBeginning(video.element)
 
   const audio = DOMElement.id('audio').element
   audio.play()
 
-  const avatars = [...DOMElement.className('avatar')]
-    .map(el => el.element)
-    .filter(el => el.tagName.toLowerCase() === 'img')
-  for (const avatar of avatars) avatar.style.display = ''
+  const avatars = DOMElement.className('avatar')
+    .filter(el => el.element.tagName.toLowerCase() === 'img')
+  for (const avatar of avatars) avatar.setDisplay(DisplayMode.unset)
 
-  DOMElement.id(id).element.style.display = 'revert'
+  DOMElement.id(id).setDisplay(DisplayMode.initial)
 }
 
 setTimeout(() => {
@@ -51,16 +50,16 @@ setTimeout(() => {
     video.addEventListener('timeupdate', e => {
       if (video.currentTime > cfg.endTime) {
         const pin = DOMElement.id('geo-pin')
-        pin.element.style.display = ''
+        pin.setDisplay(DisplayMode.unset)
         pin.element.className = vc
         video.pause()
 
         for (const friend of pin.children('friend')) {
-          friend.element.style.display = 'none'
+          friend.setDisplay(DisplayMode.none)
         }
 
         for (const friend of pin.children(`friend ${selectedFlow()}`)) {
-          friend.element.style.display = ''
+          friend.setDisplay(DisplayMode.unset)
         }
       }
     }, false);

@@ -33,49 +33,49 @@ function sliderBoundingRect() {
 }
 
 function tab() {
-  return sliderBackground().children('tab')[0].element
+  return sliderBackground().child('tab').element
 }
 
 function selectTab(num) {
   for (const slider of DOMElement.className('bww')) {
-    slider.element.style.display = 'none'
+    slider.setDisplay(DisplayMode.none)
   }
 
-  sliderBackground().element.style.display = 'block'
+  sliderBackground().setDisplay(DisplayMode.block)
 
-  const targetTab = sliderBackground().children(`${selectedFlow()}${num}`)[0].element
-  const isSelected = targetTab.style.display == 'initial'
+  const targetTab = sliderBackground().child(`${selectedFlow()}${num}`)
+  const isSelected = targetTab.isDisplay(DisplayMode.initial)
 
   for (const slider of sliderBackground().children('slider')) {
-    slider.element.style.display = 'none'
+    slider.setDisplay(DisplayMode.none)
   }
 
   const tabToDisplay = isSelected
-    ? sliderBackground().children(`${selectedFlow()}0`)[0].element
+    ? sliderBackground().child(`${selectedFlow()}0`)
     : targetTab
-  tabToDisplay.style.display = 'initial'
+  tabToDisplay.setDisplay(DisplayMode.initial)
 }
 
 function displaySearch() {
-  searchSButton().style.display = 'none'
-  searchXButton().style.display = 'initial'
-  searchMainArea().style.display = 'initial'
+  searchSButton().setDisplay(DisplayMode.none)
+  searchXButton().setDisplay(DisplayMode.initial)
+  searchMainArea().setDisplay(DisplayMode.initial)
 }
 
 function hideSearch() {
-  searchSButton().style.display = ''
-  searchXButton().style.display = ''
-  searchMainArea().style.display = ''
+  searchSButton().setDisplay(DisplayMode.unset)
+  searchXButton().setDisplay(DisplayMode.unset)
+  searchMainArea().setDisplay(DisplayMode.unset)
 }
 
 function searchSButton() {
-  return sliderBackground().children('button s')[0].element
+  return sliderBackground().child('button s')
 }
 
 function searchXButton() {
-  return sliderBackground().children('button x')[0].element
+  return sliderBackground().child('button x')
 }
 
 function searchMainArea() {
-  return sliderBackground().children('main')[0].element
+  return sliderBackground().child('main')
 }
