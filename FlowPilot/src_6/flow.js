@@ -21,7 +21,7 @@ setTimeout(() => {
 function setSelectedAvatar(id) {
   selectFlow(id)
   selectTab(0)
-  document.getElementById('geo-pin').style.display = 'none'
+  DOMElement.id('geo-pin').element.style.display = 'none'
 
   const videos = [ ...document.getElementsByTagName('video') ]
   for (const vid of videos) {
@@ -29,37 +29,38 @@ function setSelectedAvatar(id) {
     vid.pause()
   }
 
-  const video = document.getElementById(`video_${id}`) // as HTMLVideoElement
+  const video = DOMElement.id(`video_${id}`).element
   video.style.display = ''
   playFromBeginning(video)
 
-  const audio = document.getElementById('audio') // as HTMLAudioElement
+  const audio = DOMElement.id('audio').element
   audio.play()
 
-  const avatars = [...document.getElementsByClassName('avatar')]
+  const avatars = [...DOMElement.className('avatar')]
+    .map(el => el.element)
     .filter(el => el.tagName.toLowerCase() === 'img')
   for (const avatar of avatars) avatar.style.display = ''
 
-  document.getElementById(id).style.display = 'revert'
+  DOMElement.id(id).element.style.display = 'revert'
 }
 
 setTimeout(() => {
   for (const [vc, cfg] of Object.entries(videoConfig)) {
-    const video = document.getElementById(`video_${vc}`)
+    const video = DOMElement.id(`video_${vc}`).element
 
     video.addEventListener('timeupdate', e => {
       if (video.currentTime > cfg.endTime) {
-        const pin = document.getElementById('geo-pin')
-        pin.style.display = ''
-        pin.className = vc
+        const pin = DOMElement.id('geo-pin')
+        pin.element.style.display = ''
+        pin.element.className = vc
         video.pause()
 
-        for (const friend of pin.getElementsByClassName('friend')) {
-          friend.style.display = 'none'
+        for (const friend of pin.children('friend')) {
+          friend.element.style.display = 'none'
         }
 
-        for (const friend of pin.getElementsByClassName(`friend ${selectedFlow()}`)) {
-          friend.style.display = ''
+        for (const friend of pin.children(`friend ${selectedFlow()}`)) {
+          friend.element.style.display = ''
         }
       }
     }, false);
@@ -74,10 +75,9 @@ function playFromBeginning(video) {
 
 function delay(millis) { return new Promise(resolve => { setTimeout(resolve, millis); }) }
 
-
 setInterval(function bounce_pin() {
-  const pin = document.getElementById('geo-pin__pin')
-  const shadow = document.getElementById('geo-pin__shadow')
+  const pin = DOMElement.id('geo-pin__pin').element
+  const shadow = DOMElement.id('geo-pin__shadow').element
 
   const direction = pin.className == 'down' ? 'up' : 'down'
   pin.className = direction

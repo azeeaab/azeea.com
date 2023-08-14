@@ -25,33 +25,33 @@ function stopDragSliderTab(e) {
 }
 
 function sliderBackground() {
-  return document.getElementById(`slider-${selectedFlow()}`)
+  return DOMElement.id(`slider-${selectedFlow()}`)
 }
 
 function sliderBoundingRect() {
-  return sliderBackground().getBoundingClientRect()
+  return sliderBackground().element.getBoundingClientRect()
 }
 
 function tab() {
-  return sliderBackground().getElementsByClassName('tab')[0]
+  return sliderBackground().children('tab')[0].element
 }
 
 function selectTab(num) {
-  for (const slider of document.getElementsByClassName('bww')) {
-    slider.style.display = 'none'
+  for (const slider of DOMElement.className('bww')) {
+    slider.element.style.display = 'none'
   }
 
-  sliderBackground().style.display = 'block'
+  sliderBackground().element.style.display = 'block'
 
-  const targetTab = sliderBackground().getElementsByClassName(`${selectedFlow()}${num}`)[0]
+  const targetTab = sliderBackground().children(`${selectedFlow()}${num}`)[0].element
   const isSelected = targetTab.style.display == 'initial'
 
-  for (const slider of sliderBackground().getElementsByClassName('slider')) {
-    slider.style.display = 'none'
+  for (const slider of sliderBackground().children('slider')) {
+    slider.element.style.display = 'none'
   }
 
   const tabToDisplay = isSelected
-    ? sliderBackground().getElementsByClassName(`${selectedFlow()}0`)[0]
+    ? sliderBackground().children(`${selectedFlow()}0`)[0].element
     : targetTab
   tabToDisplay.style.display = 'initial'
 }
@@ -69,13 +69,13 @@ function hideSearch() {
 }
 
 function searchSButton() {
-  return sliderBackground().getElementsByClassName('button s')[0]
+  return sliderBackground().children('button s')[0].element
 }
 
 function searchXButton() {
-  return sliderBackground().getElementsByClassName('button x')[0]
+  return sliderBackground().children('button x')[0].element
 }
 
 function searchMainArea() {
-  return sliderBackground().getElementsByClassName('main')[0]
+  return sliderBackground().children('main')[0].element
 }
