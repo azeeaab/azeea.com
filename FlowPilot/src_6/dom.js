@@ -1,5 +1,5 @@
 class DOMElement {
-  /** {Element} */ element
+  /** @type {Element} */ element
 
   constructor(element) {
     if (!element) throw new Error('element is null')
@@ -39,6 +39,17 @@ class DOMElement {
   /** @param {DisplayMode} state */
   setDisplay(state) {
     this.element.style.display = state.value
+  }
+}
+
+class DOMMediaElement extends DOMElement {
+  static id(id) {
+    return new DOMMediaElement(document.getElementById(id))
+  }
+
+  playFromBeginning() {
+    this.element.currentTime = 0
+    this.element.play()
   }
 }
 

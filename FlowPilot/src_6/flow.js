@@ -29,12 +29,11 @@ function setSelectedAvatar(id) {
     vid.element.pause()
   }
 
-  const video = DOMElement.id(`video_${id}`)
+  const video = DOMMediaElement.id(`video_${id}`)
   video.setDisplay(DisplayMode.unset)
-  playFromBeginning(video.element)
+  video.playFromBeginning()
 
-  const audio = DOMElement.id('audio')
-  audio.element.play()
+  DOMMediaElement.id('audio').playFromBeginning()
 
   const avatars = DOMElement.className('avatar')
     .filter(el => el.element.tagName.toLowerCase() === 'img')
@@ -65,12 +64,6 @@ setTimeout(() => {
     }, false);
   }
 }, 10)
-
-/** @param {HTMLVideoElement} video */
-function playFromBeginning(video) {
-  video.currentTime = 0
-  video.play()
-}
 
 function delay(millis) { return new Promise(resolve => { setTimeout(resolve, millis); }) }
 
