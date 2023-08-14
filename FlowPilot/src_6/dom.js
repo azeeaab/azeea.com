@@ -31,14 +31,16 @@ class DOMElement {
       .map(el => new DOMElement(el))
   }
 
-  /** @param {DisplayMode} state */
-  isDisplay(state) {
-    return this.element.style.display == state.value
+  display() {
+    this.element.style.display = 'block'
   }
 
-  /** @param {DisplayMode} state */
-  setDisplay(state) {
-    this.element.style.display = state.value
+  hide() {
+    this.element.style.display = 'none'
+  }
+
+  isDisplayed() {
+    return getComputedStyle(this.element).display !== 'none'
   }
 }
 
@@ -50,17 +52,5 @@ class DOMMediaElement extends DOMElement {
   playFromBeginning() {
     this.element.currentTime = 0
     this.element.play()
-  }
-}
-
-class DisplayMode {
-  static unset = new DisplayMode('')
-  static block = new DisplayMode('block')
-  static initial = new DisplayMode('initial')
-  static none = new DisplayMode('none')
-
-  constructor(value) {
-    this.value = value
-    Object.freeze(this)
   }
 }

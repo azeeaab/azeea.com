@@ -38,34 +38,34 @@ function tab() {
 
 function selectTab(num) {
   for (const slider of DOMElement.className('bww')) {
-    slider.setDisplay(DisplayMode.none)
+    slider.hide()
   }
 
-  sliderBackground().setDisplay(DisplayMode.block)
+  sliderBackground().display()
 
   const targetTab = sliderBackground().child(`${selectedFlow()}${num}`)
-  const isSelected = targetTab.isDisplay(DisplayMode.initial)
+  const isSelected = targetTab.isDisplayed()
 
   for (const slider of sliderBackground().children('slider')) {
-    slider.setDisplay(DisplayMode.none)
+    slider.hide()
   }
 
   const tabToDisplay = isSelected
     ? sliderBackground().child(`${selectedFlow()}0`)
     : targetTab
-  tabToDisplay.setDisplay(DisplayMode.initial)
+  tabToDisplay.display()
 }
 
 function displaySearch() {
-  searchSButton().setDisplay(DisplayMode.none)
-  searchXButton().setDisplay(DisplayMode.initial)
-  searchMainArea().setDisplay(DisplayMode.initial)
+  searchSButton().hide()
+  searchXButton().display()
+  searchMainArea().display()
 }
 
 function hideSearch() {
-  searchSButton().setDisplay(DisplayMode.unset)
-  searchXButton().setDisplay(DisplayMode.unset)
-  searchMainArea().setDisplay(DisplayMode.unset)
+  searchSButton().display()
+  searchXButton().hide()
+  searchMainArea().hide()
 }
 
 function searchSButton() {

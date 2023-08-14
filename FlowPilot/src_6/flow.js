@@ -21,44 +21,44 @@ setTimeout(() => {
 function setSelectedAvatar(id) {
   selectFlow(id)
   selectTab(0)
-  DOMElement.id('geo-pin').setDisplay(DisplayMode.none)
+  DOMElement.id('geo-pin').hide()
 
   const videos = DOMElement.tagName('video')
   for (const vid of videos) {
-    vid.setDisplay(DisplayMode.none)
+    vid.hide()
     vid.element.pause()
   }
 
   const video = DOMMediaElement.id(`video_${id}`)
-  video.setDisplay(DisplayMode.unset)
+  video.display()
   video.playFromBeginning()
 
   DOMMediaElement.id('audio').playFromBeginning()
 
   const avatars = DOMElement.className('avatar')
     .filter(el => el.element.tagName.toLowerCase() === 'img')
-  for (const avatar of avatars) avatar.setDisplay(DisplayMode.unset)
+  for (const avatar of avatars) avatar.hide()
 
-  DOMElement.id(id).setDisplay(DisplayMode.initial)
+  DOMElement.id(id).display()
 }
 
 setTimeout(() => {
   for (const [vc, cfg] of Object.entries(videoConfig)) {
-    const video = DOMElement.id(`video_${vc}`)
+    const video = DOMMediaElement.id(`video_${vc}`)
 
     video.element.addEventListener('timeupdate', e => {
       if (video.element.currentTime > cfg.endTime) {
         const pin = DOMElement.id('geo-pin')
-        pin.setDisplay(DisplayMode.unset)
+        pin.display()
         pin.element.className = vc
         video.element.pause()
 
         for (const friend of pin.children('friend')) {
-          friend.setDisplay(DisplayMode.none)
+          friend.hide()
         }
 
         for (const friend of pin.children(`friend ${selectedFlow()}`)) {
-          friend.setDisplay(DisplayMode.unset)
+          friend.display()
         }
       }
     }, false);
@@ -71,7 +71,8 @@ setInterval(function bounce_pin() {
   const pin = DOMElement.id('geo-pin__pin')
   const shadow = DOMElement.id('geo-pin__shadow')
 
-  const direction = pin.className == 'down' ? 'up' : 'down'
+  const direction = pin.element.className == 'down' ? 'up' : 'down'
+  console.log('bounce', pin.element.className, direction)
   pin.element.className = direction
   shadow.element.className = direction
 }, 1000)
