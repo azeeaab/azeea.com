@@ -50,7 +50,7 @@ setTimeout(() => {
       if (video.element.currentTime > cfg.endTime) {
         const pin = DOMElement.id('geo-pin')
         pin.display()
-        pin.element.className = vc
+        pin.setClass(vc)
         video.element.pause()
 
         for (const friend of pin.children('friend')) {
@@ -71,8 +71,7 @@ setInterval(function bounce_pin() {
   const pin = DOMElement.id('geo-pin__pin')
   const shadow = DOMElement.id('geo-pin__shadow')
 
-  const direction = pin.element.className == 'down' ? 'up' : 'down'
-  console.log('bounce', pin.element.className, direction)
-  pin.element.className = direction
-  shadow.element.className = direction
+  const direction = pin.hasClass('down') ? 'up' : 'down'
+  pin.setClass(direction)
+  shadow.setClass(direction)
 }, 1000)

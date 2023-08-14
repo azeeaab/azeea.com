@@ -21,6 +21,14 @@ class DOMElement {
       .map(el => new DOMElement(el))
   }
 
+  hasClass(className) {
+    return [...this.element.classList].includes(className)
+  }
+
+  setClass(className) {
+    return this.element.className = className
+  }
+
   child(className) {
     const children = this.element.getElementsByClassName(className)
     return new DOMElement(children[0])
