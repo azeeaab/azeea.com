@@ -16,7 +16,7 @@ function dragSliderTab(e) {
   if (!slider_state.dragOrigin) return
 
   const {pageX} = e
-  tab().style.left = `${Math.min(Math.max(pageX - sliderBoundingRect().x - tabHalfWidth, minX), maxX)}px`
+  tab().element.style.left = `${Math.min(Math.max(pageX - sliderBoundingRect().x - tabHalfWidth, minX), maxX)}px`
 }
 
 function stopDragSliderTab(e) {
@@ -33,7 +33,7 @@ function sliderBoundingRect() {
 }
 
 function tab() {
-  return sliderBackground().child('tab').element
+  return sliderBackground().child('tab')
 }
 
 function selectTab(num) {

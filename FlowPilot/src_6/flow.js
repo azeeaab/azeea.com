@@ -33,8 +33,8 @@ function setSelectedAvatar(id) {
   video.setDisplay(DisplayMode.unset)
   playFromBeginning(video.element)
 
-  const audio = DOMElement.id('audio').element
-  audio.play()
+  const audio = DOMElement.id('audio')
+  audio.element.play()
 
   const avatars = DOMElement.className('avatar')
     .filter(el => el.element.tagName.toLowerCase() === 'img')
@@ -45,14 +45,14 @@ function setSelectedAvatar(id) {
 
 setTimeout(() => {
   for (const [vc, cfg] of Object.entries(videoConfig)) {
-    const video = DOMElement.id(`video_${vc}`).element
+    const video = DOMElement.id(`video_${vc}`)
 
-    video.addEventListener('timeupdate', e => {
-      if (video.currentTime > cfg.endTime) {
+    video.element.addEventListener('timeupdate', e => {
+      if (video.element.currentTime > cfg.endTime) {
         const pin = DOMElement.id('geo-pin')
         pin.setDisplay(DisplayMode.unset)
         pin.element.className = vc
-        video.pause()
+        video.element.pause()
 
         for (const friend of pin.children('friend')) {
           friend.setDisplay(DisplayMode.none)
@@ -75,10 +75,10 @@ function playFromBeginning(video) {
 function delay(millis) { return new Promise(resolve => { setTimeout(resolve, millis); }) }
 
 setInterval(function bounce_pin() {
-  const pin = DOMElement.id('geo-pin__pin').element
-  const shadow = DOMElement.id('geo-pin__shadow').element
+  const pin = DOMElement.id('geo-pin__pin')
+  const shadow = DOMElement.id('geo-pin__shadow')
 
   const direction = pin.className == 'down' ? 'up' : 'down'
-  pin.className = direction
-  shadow.className = direction
+  pin.element.className = direction
+  shadow.element.className = direction
 }, 1000)
