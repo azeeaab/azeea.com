@@ -53,13 +53,8 @@ setTimeout(() => {
         pin.setClass(vc)
         video.element.pause()
 
-        for (const friend of pin.children('friend')) {
-          friend.hide()
-        }
-
-        for (const friend of pin.children(`friend ${selectedFlow()}`)) {
-          friend.display()
-        }
+        for (const friend of pin.children('friend'))
+          friend.display(friend.hasClass(selectedFlow()))
       }
     }, false);
   }

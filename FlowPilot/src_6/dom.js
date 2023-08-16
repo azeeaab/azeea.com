@@ -39,12 +39,12 @@ class DOMElement {
       .map(el => new DOMElement(el))
   }
 
-  display() {
-    this.element.style.display = 'block'
+  display(b = true) {
+    this.element.style.display = b ? 'block' : 'none'
   }
 
   hide() {
-    this.element.style.display = 'none'
+    this.display(false)
   }
 
   isDisplayed() {
