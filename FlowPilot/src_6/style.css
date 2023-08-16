@@ -131,6 +131,34 @@ video {
   cursor: ew-resize;
 }
 
+.bww>.value::after {
+  content: '%';
+  font-family: Arial Narrow;}
+
+.bww>.value {
+  z-index: 1;
+  background-color: black;
+  position: absolute;
+  top: 37px;
+  color: white;
+  font-family: Arial Black;
+  font-size: 10pt;
+  padding: 0 2px;
+  border-radius: 4px;
+}
+
+.bww>.value._1 {
+  left: 137px;
+}
+
+.bww>.value._2 {
+  left: 314px;
+}
+
+.bww>.value._3 {
+  left: 462px;
+}
+
 #geo-pin {
   position: absolute;
   bottom: 25vh;
