@@ -59,44 +59,44 @@ button.avatar.C {
   top: 140px;
 }
 
-.bww button {
+.search-panel button {
   position: absolute;
   background-color: transparent;
   top: 30px;
   height: 33px;
 }
 
-.bww button:hover {
+.search-panel button:hover {
   border: none;
 }
 
-.bww button._1 {
+.search-panel button._1 {
   left: 0;
   width: 175px;
 }
-.bww button._2 {
+.search-panel button._2 {
   left: 175px;
   width: 175px;
 }
-.bww button._3 {
+.search-panel button._3 {
   left: 350px;
   width: 150px;
 }
 
-.bww .search.button {
+.search-panel .search.button {
   top: 70px;
   right: 0;
   width: 40px;
 }
 
-.bww .main {
+.search-panel .main {
   top: 70px;
   left: 0;
   width: 450px;
   display: none;
 }
 
-.bww .search.button.x {
+.search-panel .search.button.x {
   display: none;
 }
 
@@ -105,7 +105,7 @@ video {
   max-width: 99vw;
 }
 
-.bww {
+.search-panel {
   position: relative;
   height: 30px;
   width: 500px;
@@ -115,12 +115,12 @@ video {
   z-index: 1;
 }
 
-.bww .slider {
+.search-panel .slider {
   max-width: 100%;
   display: none;
 }
 
-.bww .tab {
+.search-panel .tab {
   background-color: pink;
   position: absolute;
   top: 1px;
@@ -131,11 +131,11 @@ video {
   cursor: ew-resize;
 }
 
-.bww>.value::after {
+.search-panel>.value::after {
   content: '%';
   font-family: Arial Narrow;}
 
-.bww>.value {
+.search-panel>.value {
   z-index: 1;
   background-color: black;
   position: absolute;
@@ -147,15 +147,26 @@ video {
   border-radius: 4px;
 }
 
-.bww>.value._1 {
+.search-panel .toggle {
+  display: none;
+}
+
+.search-panel._0 .toggle._0,
+.search-panel._1 .toggle._1,
+.search-panel._2 .toggle._2,
+.search-panel._3 .toggle._3 {
+  display: revert;
+}
+
+.search-panel>.value._1 {
   left: 137px;
 }
 
-.bww>.value._2 {
+.search-panel>.value._2 {
   left: 314px;
 }
 
-.bww>.value._3 {
+.search-panel>.value._3 {
   left: 462px;
 }
 

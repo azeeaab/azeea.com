@@ -25,6 +25,15 @@ class DOMElement {
     return [...this.element.classList].includes(className)
   }
 
+  addClass(className) {
+    if (this.hasClass(className)) return
+    this.element.classList.add(className)
+  }
+
+  removeClasses(classNames) {
+    this.element.classList = [...this.element.classList].filter(x => !classNames.includes(x))
+  }
+
   setClass(className) {
     return this.element.className = className
   }

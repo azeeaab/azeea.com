@@ -37,23 +37,12 @@ function tab() {
 }
 
 function selectTab(num) {
-  for (const slider of DOMElement.className('bww')) {
-    slider.hide()
-  }
+  const bg = sliderBackground()
+  const wasSelected = bg.hasClass(`_${num}`)
 
-  sliderBackground().display()
-
-  const targetTab = sliderBackground().child(`${selectedFlow()}${num}`)
-  const isSelected = targetTab.isDisplayed()
-
-  for (const slider of sliderBackground().children('slider')) {
-    slider.hide()
-  }
-
-  const tabToDisplay = isSelected
-    ? sliderBackground().child(`${selectedFlow()}0`)
-    : targetTab
-  tabToDisplay.display()
+  bg.display()
+  bg.setClass('search-panel')
+  bg.addClass(!num || wasSelected ? '_0' : `_${num}`)
 }
 
 function displaySearch() {
