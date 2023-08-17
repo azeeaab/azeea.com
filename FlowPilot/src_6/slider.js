@@ -56,6 +56,10 @@ function tab() {
 }
 
 function selectTab(num) {
+  for (const slider of DOMElement.className('search-panel')) {
+    slider.hide()
+  }
+
   const tabId = `_${num}`
   const bg = sliderBackground()
   const wasSelected = bg.hasClass(tabId)
