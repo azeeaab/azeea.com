@@ -6,6 +6,11 @@ const slider_state = {
   dragOrigin: null,
 }
 
+function placeSliderTab(loc) {
+  const x = loc * (maxX - minX) + minX
+  tab().element.style.left = `${x}px`
+}
+
 function startDragSliderTab(e) {
   const {pageX, pageY} = e
   slider_state.dragOrigin = {pageX, pageY}
@@ -58,6 +63,9 @@ function selectTab(num) {
   bg.display()
   bg.setClass('search-panel')
   bg.addClass(!num || wasSelected ? '_0' : tabId)
+
+  const label = bg.child(`value _${num}`)
+  if (label) placeSliderTab(label.element.innerText / 100)
 }
 
 setTimeout(() => {
