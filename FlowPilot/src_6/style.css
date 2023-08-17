@@ -127,14 +127,26 @@ video {
 }
 
 .search-panel .tab {
-  background-color: pink;
   position: absolute;
-  top: 1px;
+  top: -1px;
   left: 50%;
   height: 26px;
-  width: 3px;
-  border: 1px solid;
+  width: 7px;
+  border: 2px solid white;
   cursor: ew-resize;
+  border-radius: 4px;
+}
+
+#slider-A .tab {
+  background-color: #0e87a7;
+}
+
+#slider-B .tab {
+  background-color: #863738;
+}
+
+#slider-C .tab {
+  background-color: #4d6f7e;
 }
 
 .search-panel>.value::after {

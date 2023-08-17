@@ -1,6 +1,6 @@
 const minX = 24
 const maxX = 473
-const tabHalfWidth = 2.5
+const tabHalfWidth = 5
 
 const slider_state = {
   dragOrigin: null,
