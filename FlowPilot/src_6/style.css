@@ -72,6 +72,15 @@ button.avatar.C {
   height: 33px;
 }
 
+.search-panel .curtain {
+  background-color: #FFF4;
+  position: absolute;
+  left: 24px;
+  top: 5px;
+  width: 115px;
+  height: 20px;
+}
+
 .search-panel button:hover {
   border: none;
 }

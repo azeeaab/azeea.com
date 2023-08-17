@@ -9,6 +9,7 @@ const slider_state = {
 function placeSliderTab(loc) {
   const x = loc * (maxX - minX) + minX
   tab().element.style.left = `${x}px`
+  curtain().element.style.width = `${x - minX - 2}px`
 }
 
 function startDragSliderTab(e) {
@@ -25,6 +26,7 @@ function dragSliderTab(e) {
 
   const clampedX = Math.min(Math.max(elementX, minX), maxX)
   tab().element.style.left = `${clampedX}px`
+  curtain().element.style.width = `${clampedX - minX - 2}px`
 
   document.body.dispatchEvent(
     new SliderEvent((clampedX - minX) / (maxX - minX))
@@ -53,6 +55,10 @@ function sliderBoundingRect() {
 
 function tab() {
   return sliderBackground().child('tab')
+}
+
+function curtain() {
+  return sliderBackground().child('curtain')
 }
 
 function selectTab(num) {
