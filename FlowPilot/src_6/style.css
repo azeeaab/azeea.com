@@ -77,7 +77,7 @@ button.avatar.C {
   position: absolute;
   left: 24px;
   top: 5px;
-  width: 115px;
+  width: 222.5px;
   height: 20px;
 }
 
@@ -138,7 +138,7 @@ video {
 .search-panel .tab {
   position: absolute;
   top: -1px;
-  left: 50%;
+  left: 248.5px;
   height: 26px;
   width: 7px;
   border: 2px solid white;
@@ -158,11 +158,11 @@ video {
   background-color: #4d6f7e;
 }
 
-.search-panel>.value::after {
+.search-panel .value::after {
   content: '%';
   font-family: Arial Narrow;}
 
-.search-panel>.value {
+.search-panel .value {
   z-index: 1;
   background-color: black;
   position: absolute;
@@ -172,6 +172,11 @@ video {
   font-size: 10pt;
   padding: 0 2px;
   border-radius: 4px;
+}
+
+.search-panel .value.mess {
+  top: -12px;
+  left: 13px;
 }
 
 .search-panel .toggle {

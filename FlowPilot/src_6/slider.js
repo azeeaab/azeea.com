@@ -75,18 +75,22 @@ function selectTab(num) {
   bg.addClass(!num || wasSelected ? '_0' : tabId)
 
   const label = bg.child(`value _${num}`)
-  if (label) placeSliderTab(label.element.innerText / 100)
+  if (label) {
+    placeSliderTab(label.element.innerText / 100)
+    mess().element.innerText = label.element.innerText
+  }
 }
 
 setTimeout(() => {
   document.body.addEventListener('slider', ({value}) => {
     const bg = sliderBackground()
     const tabId = bg.element.classList[1]
-    const valueLabel = bg.child('value ' + tabId)
-    if (!valueLabel) return // No tab selected; what to do??
 
     const percentage = Math.round(value * 100)
-    valueLabel.element.innerText = percentage
+    mess().element.innerText = percentage
+
+    const valueLabel = bg.child('value ' + tabId)
+    if (valueLabel) valueLabel.element.innerText = percentage
   })
 }, 10)
 
@@ -112,4 +116,8 @@ function searchXButton() {
 
 function searchMainArea() {
   return sliderBackground().child('main')
+}
+
+function mess() {
+  return sliderBackground().child('mess')
 }
