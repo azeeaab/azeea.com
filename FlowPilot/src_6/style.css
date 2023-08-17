@@ -179,6 +179,17 @@ video {
   left: 13px;
 }
 
+.search-panel input {
+  position: absolute;
+  top: 87px;
+  left: 50px;
+  width: 320px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: white;
+}
+
 .search-panel .toggle {
   display: none;
 }
