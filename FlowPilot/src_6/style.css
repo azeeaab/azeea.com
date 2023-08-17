@@ -1,3 +1,9 @@
+body {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
 img {
   position: absolute;
   transition: opacity 0.6s ease-out,

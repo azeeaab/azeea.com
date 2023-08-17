@@ -16,7 +16,21 @@ function dragSliderTab(e) {
   if (!slider_state.dragOrigin) return
 
   const {pageX} = e
-  tab().element.style.left = `${Math.min(Math.max(pageX - sliderBoundingRect().x - tabHalfWidth, minX), maxX)}px`
+  const elementX = pageX - sliderBoundingRect().x - tabHalfWidth
+
+  const clampedX = Math.min(Math.max(elementX, minX), maxX)
+  tab().element.style.left = `${clampedX}px`
+
+  document.body.dispatchEvent(
+    new SliderEvent((clampedX - minX) / (maxX - minX))
+  )
+}
+
+class SliderEvent extends Event {
+  constructor(value) {
+    super('slider')
+    this.value = value
+  }
 }
 
 function stopDragSliderTab(e) {
@@ -37,13 +51,26 @@ function tab() {
 }
 
 function selectTab(num) {
+  const tabId = `_${num}`
   const bg = sliderBackground()
-  const wasSelected = bg.hasClass(`_${num}`)
+  const wasSelected = bg.hasClass(tabId)
 
   bg.display()
   bg.setClass('search-panel')
-  bg.addClass(!num || wasSelected ? '_0' : `_${num}`)
+  bg.addClass(!num || wasSelected ? '_0' : tabId)
 }
+
+setTimeout(() => {
+  document.body.addEventListener('slider', ({value}) => {
+    const bg = sliderBackground()
+    const tabId = bg.element.classList[1]
+    const valueLabel = bg.child('value ' + tabId)
+    if (!valueLabel) return // No tab selected; what to do??
+
+    const percentage = Math.round(value * 100)
+    valueLabel.element.innerText = percentage
+  })
+}, 10)
 
 function displaySearch() {
   searchSButton().hide()

@@ -40,7 +40,7 @@ class DOMElement {
 
   child(className) {
     const children = this.element.getElementsByClassName(className)
-    return new DOMElement(children[0])
+    return (children.length || null) && new DOMElement(children[0])
   }
 
   children(className) {
