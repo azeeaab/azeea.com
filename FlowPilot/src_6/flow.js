@@ -1,22 +1,5 @@
-const videoConfig = {
-  'A': {
-    endTime: 15,
-    pinImage: 'SurfinBoard pin.png',
-  },
-  'B': {
-    endTime: 15,
-    pinImage: 'Tennis pin.png',
-  },
-  'C': {
-    endTime: 28,
-    pinImage: 'Basketball pin.png',
-  },
-}
-
-setTimeout(() => {
-  setSelectedAvatar('A')
-  hideSearch()
-}, 10)
+setSelectedAvatar('A')
+hideSearch()
 
 function setSelectedAvatar(id) {
   selectFlow(id)
@@ -42,23 +25,21 @@ function setSelectedAvatar(id) {
   DOMElement.id(id).display()
 }
 
-setTimeout(() => {
-  for (const [vc, cfg] of Object.entries(videoConfig)) {
-    const video = DOMMediaElement.id(`video_${vc}`)
+for (const [vc, cfg] of Object.entries(videoConfig)) {
+  const video = DOMMediaElement.id(`video_${vc}`)
 
-    video.element.addEventListener('timeupdate', e => {
-      if (video.element.currentTime > cfg.endTime) {
-        const pin = DOMElement.id('geo-pin')
-        pin.display()
-        pin.setClass(vc)
-        video.element.pause()
+  video.element.addEventListener('timeupdate', e => {
+    if (video.element.currentTime > cfg.endTime) {
+      const pin = DOMElement.id('geo-pin')
+      pin.display()
+      pin.setClass(vc)
+      video.element.pause()
 
-        for (const friend of pin.children('friend'))
-          friend.display(friend.hasClass(selectedFlow()))
-      }
-    }, false);
-  }
-}, 10)
+      for (const friend of pin.children('friend'))
+        friend.display(friend.hasClass(selectedFlow()))
+    }
+  }, false);
+}
 
 function delay(millis) { return new Promise(resolve => { setTimeout(resolve, millis); }) }
 

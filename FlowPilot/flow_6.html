@@ -1,88 +1,12 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="src_6/style.css">
-  <script type="text/javascript" src="src_6/dom.js"></script>
-  <script type="text/javascript" src="src_6/flow.js"></script>
-  <script type="text/javascript" src="src_6/slider.js"></script>
-  <script type="text/javascript" src="src_6/rain.js"></script>
-  <script type="text/javascript" src="src_6/falling-image.js"></script>
 </head>
 <body style="background-color: darkslateblue;">
 
-  <div id="slider-A" class="search-panel _0">
-    <img id="slider-A0" class="slider A0 toggle _0" src="./Graphics/slider-A0.png">
-    <img id="slider-A1" class="slider A1 toggle _1" src="./Graphics/slider-A1.png">
-    <img id="slider-A2" class="slider A2 toggle _2" src="./Graphics/slider-A2.png">
-    <img id="slider-A3" class="slider A3 toggle _3" src="./Graphics/slider-A3.png">
-    <div class="tab" onpointerdown="startDragSliderTab(event)" onpointerup="stopDragSliderTab(event)" onpointermove="dragSliderTab(event)">
-      <div class="value mess">50</div>
-    </div>
-    <div class="curtain"></div>
-
-    <div class="value _1">50</div>
-    <div class="value _2">50</div>
-    <div class="value _3">50</div>
-
-    <button onclick="selectTab(1)" class="_1"></button>
-    <button onclick="selectTab(2)" class="_2"></button>
-    <button onclick="selectTab(3)" class="_3"></button>
-
-    <img class="search button s" src="./Graphics/search-s.png" onclick="displaySearch()">
-    <img class="search button x" src="./Graphics/search-x.png" onclick="hideSearch()">
-    <img class="search main" src="./Graphics/Search.png">
-
-    <input>
-  </div>
-
-  <div id="slider-B" class="search-panel _0">
-    <img id="slider-B0" class="slider B0 toggle _0" src="./Graphics/slider-B0.png">
-    <img id="slider-B1" class="slider B1 toggle _1" src="./Graphics/slider-B1.png">
-    <img id="slider-B2" class="slider B2 toggle _2" src="./Graphics/slider-B2.png">
-    <img id="slider-B3" class="slider B3 toggle _3" src="./Graphics/slider-B3.png">
-    <div class="tab" onpointerdown="startDragSliderTab(event)" onpointerup="stopDragSliderTab(event)" onpointermove="dragSliderTab(event)">
-      <div class="value mess">50</div>
-    </div>
-    <div class="curtain"></div>
-
-    <div class="value _1">50</div>
-    <div class="value _2">50</div>
-    <div class="value _3">50</div>
-
-    <button onclick="selectTab(1)" class="_1"></button>
-    <button onclick="selectTab(2)" class="_2"></button>
-    <button onclick="selectTab(3)" class="_3"></button>
-
-    <img class="search button s" src="./Graphics/search-s B.png" onclick="displaySearch()">
-    <img class="search button x" src="./Graphics/search-x B.png" onclick="hideSearch()">
-    <img class="search main" src="./Graphics/Search B.png">
-
-    <input>
-  </div>
-
-  <div id="slider-C" class="search-panel _0">
-    <img id="slider-C0" class="slider C0 toggle _0" src="./Graphics/slider-C0.png">
-    <img id="slider-C1" class="slider C1 toggle _1" src="./Graphics/slider-C1.png">
-    <img id="slider-C2" class="slider C2 toggle _2" src="./Graphics/slider-C2.png">
-    <img id="slider-C3" class="slider C3 toggle _3" src="./Graphics/slider-C3.png">
-    <div class="tab" onpointerdown="startDragSliderTab(event)" onpointerup="stopDragSliderTab(event)" onpointermove="dragSliderTab(event)">
-      <div class="value mess">50</div>
-    </div>
-    <div class="curtain"></div>
-
-    <div class="value _1">50</div>
-    <div class="value _2">50</div>
-    <div class="value _3">50</div>
-
-    <button onclick="selectTab(1)" class="_1"></button>
-    <button onclick="selectTab(2)" class="_2"></button>
-    <button onclick="selectTab(3)" class="_3"></button>
-
-    <img class="search button s" src="./Graphics/search-s C.png" onclick="displaySearch()">
-    <img class="search button x" src="./Graphics/search-x-C.png" onclick="hideSearch()">
-    <img class="search main" src="./Graphics/Search C.png">
-
-    <input>
-  </div>
+  <div id="slider-A" class="search-panel _0"></div>
+  <div id="slider-B" class="search-panel _0"></div>
+  <div id="slider-C" class="search-panel _0"></div>
 
   <img id="A" class="avatar A" src="./Avatar A.png">
   <img id="B" class="avatar B" src="./Avatar B.png">
@@ -108,5 +32,145 @@
 
     <img class="friend C" src="./Graphics/FriendAvatar-C1.png">
   </div>
+
+  <script type="text/javascript"><!--
+  // Configuration
+const sliders = {
+  A: {
+    sliders: [
+      "./Graphics/slider-A0.png",
+      "./Graphics/slider-A1.png",
+      "./Graphics/slider-A2.png",
+      "./Graphics/slider-A3.png",
+    ],
+
+    s: "./Graphics/search-s.png",
+    x: "./Graphics/search-x.png",
+    main: "./Graphics/Search.png",
+  },
+  B: {
+    sliders: [
+      "./Graphics/slider-B0.png",
+      "./Graphics/slider-B1.png",
+      "./Graphics/slider-B2.png",
+      "./Graphics/slider-B3.png",
+    ],
+
+    s: "./Graphics/search-s B.png",
+    x: "./Graphics/search-x B.png",
+    main: "./Graphics/Search B.png",
+  },
+  C: {
+    sliders: [
+      "./Graphics/slider-C0.png",
+      "./Graphics/slider-C1.png",
+      "./Graphics/slider-C2.png",
+      "./Graphics/slider-C3.png",
+    ],
+
+    s: "./Graphics/search-s C.png",
+    x: "./Graphics/search-x-C.png",
+    main: "./Graphics/Search C.png",
+  },
+}
+
+const videoConfig = {
+  A: {
+    endTime: 15,
+    pinImage: 'SurfinBoard pin.png',
+  },
+  B: {
+    endTime: 15,
+    pinImage: 'Tennis pin.png',
+  },
+  C: {
+    endTime: 28,
+    pinImage: 'Basketball pin.png',
+  },
+}
+
+const images = [
+  {
+    src: '../DummyGraphics/Beachen.png',
+    width: 2865,
+    height: 1852,
+  }, {
+    src: '../DummyGraphics/Bycycle.png',
+    width: 2987,
+    height: 1920,
+  }, {
+    src: '../DummyGraphics/Canoeing1.png',
+    width: 3985,
+    height: 2533,
+  }, {
+    src: '../DummyGraphics/Canoeing2.png',
+    width: 4213,
+    height: 2556,
+  }, {
+    src: '../DummyGraphics/Divers.png',
+    width: 4103,
+    height: 2517,
+  }, {
+    src: '../DummyGraphics/Havslandskap.png',
+    width: 3299,
+    height: 1414,
+  }, {
+    src: '../DummyGraphics/Kayaking.png',
+    width: 3625,
+    height: 1637,
+  }, {
+    src: '../DummyGraphics/Sailboat.png',
+    width: 4173,
+    height: 1946,
+  }, {
+    src: '../DummyGraphics/Skatare.png',
+    width: 3433,
+    height: 1949,
+  }, {
+    src: '../DummyGraphics/Snorkeling1.png',
+    width: 3496,
+    height: 2480,
+  }, {
+    src: '../DummyGraphics/Snorkeling2.png',
+    width: 3044,
+    height: 1979,
+  }, {
+    src: '../DummyGraphics/StandPaddel.png',
+    width: 2215,
+    height: 2052,
+  }, {
+    src: '../DummyGraphics/Surfare.png',
+    width: 2538,
+    height: 3935,
+  }, {
+    src: '../DummyGraphics/WaveSurfer.png',
+    width: 4189,
+    height: 2542,
+  }
+]
+
+const flows = {
+  A: [
+    images[0],
+    images[12],
+    images[13],
+  ],
+  B: [
+    images[5],
+    images[6],
+    images[2],
+  ],
+  C: [
+    images[4],
+    images[7],
+    images[9],
+  ]
+}
+  --></script>
+  <script type="text/javascript" src="src_6/dom.js"></script>
+  <script type="text/javascript" src="src_6/rain.js"></script>
+  <script type="text/javascript" src="src_6/slider.js"></script>
+  <script type="text/javascript" src="src_6/flow.js"></script>
+  <script type="text/javascript" src="src_6/falling-image.js"></script>
 </body>
 </html>

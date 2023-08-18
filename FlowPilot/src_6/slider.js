@@ -81,18 +81,16 @@ function selectTab(num) {
   }
 }
 
-setTimeout(() => {
-  document.body.addEventListener('slider', ({value}) => {
-    const bg = sliderBackground()
-    const tabId = bg.element.classList[1]
+document.body.addEventListener('slider', ({value}) => {
+  const bg = sliderBackground()
+  const tabId = bg.element.classList[1]
 
-    const percentage = Math.round(value * 100)
-    mess().element.innerText = percentage
+  const percentage = Math.round(value * 100)
+  mess().element.innerText = percentage
 
-    const valueLabel = bg.child('value ' + tabId)
-    if (valueLabel) valueLabel.element.innerText = percentage
-  })
-}, 10)
+  const valueLabel = bg.child('value ' + tabId)
+  if (valueLabel) valueLabel.element.innerText = percentage
+})
 
 function displaySearch() {
   searchSButton().hide()
@@ -120,4 +118,57 @@ function searchMainArea() {
 
 function mess() {
   return sliderBackground().child('mess')
+}
+
+const html = `
+<img id="slider-C0" class="slider C0 toggle _0">
+<img id="slider-C1" class="slider C1 toggle _1">
+<img id="slider-C2" class="slider C2 toggle _2">
+<img id="slider-C3" class="slider C3 toggle _3">
+<div class="tab" onpointerdown="startDragSliderTab(event)" onpointerup="stopDragSliderTab(event)" onpointermove="dragSliderTab(event)">
+  <div class="value mess">50</div>
+</div>
+<div class="curtain"></div>
+
+<div class="value _1">50</div>
+<div class="value _2">50</div>
+<div class="value _3">50</div>
+
+<button onclick="selectTab(1)" class="_1"></button>
+<button onclick="selectTab(2)" class="_2"></button>
+<button onclick="selectTab(3)" class="_3"></button>
+
+<img class="search button s" onclick="displaySearch()">
+<img class="search button x" onclick="hideSearch()">
+<img class="search main">
+
+<input>
+`
+
+injectSlider(DOMElement.id('slider-A'), sliders.A)
+injectSlider(DOMElement.id('slider-B'), sliders.B)
+injectSlider(DOMElement.id('slider-C'), sliders.C)
+
+function injectSlider(parent, config) {
+  parent.element.innerHTML = html
+
+  for (i = 0; i < 4; i++)
+    parent.child(`toggle _${i}`).element.src = config.sliders[i]
+  parent.child('search s').element.src = config.s
+  parent.child('search x').element.src = config.x
+  parent.child('search main').element.src = config.main
+}
+
+
+const config = {
+  sliders: [
+    "./Graphics/slider-A0.png",
+    "./Graphics/slider-A1.png",
+    "./Graphics/slider-A2.png",
+    "./Graphics/slider-A3.png",
+  ],
+
+  s: "./Graphics/search-s.png",
+  x: "./Graphics/search-x.png",
+  main: "./Graphics/Search.png",
 }
