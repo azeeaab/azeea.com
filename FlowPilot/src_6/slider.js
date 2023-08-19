@@ -121,10 +121,10 @@ function mess() {
 }
 
 const html = `
-<img id="slider-C0" class="slider C0 toggle _0">
-<img id="slider-C1" class="slider C1 toggle _1">
-<img id="slider-C2" class="slider C2 toggle _2">
-<img id="slider-C3" class="slider C3 toggle _3">
+<img class="slider toggle _0">
+<img class="slider toggle _1">
+<img class="slider toggle _2">
+<img class="slider toggle _3">
 <div class="tab" onpointerdown="startDragSliderTab(event)" onpointerup="stopDragSliderTab(event)" onpointermove="dragSliderTab(event)">
   <div class="value mess">50</div>
 </div>
@@ -157,18 +157,4 @@ function injectSlider(parent, config) {
   parent.child('search s').element.src = config.s
   parent.child('search x').element.src = config.x
   parent.child('search main').element.src = config.main
-}
-
-
-const config = {
-  sliders: [
-    "./Graphics/slider-A0.png",
-    "./Graphics/slider-A1.png",
-    "./Graphics/slider-A2.png",
-    "./Graphics/slider-A3.png",
-  ],
-
-  s: "./Graphics/search-s.png",
-  x: "./Graphics/search-x.png",
-  main: "./Graphics/Search.png",
 }

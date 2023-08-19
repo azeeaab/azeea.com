@@ -241,24 +241,6 @@ video {
   display: initial;
 }
 
-#geo-pin__A {
-  left: -50%;
-  bottom: -10px;
-  height: 200px;
-}
-
-#geo-pin__B {
-  height: 200px;
-  bottom: -10px;
-  transform: translateX(-32%);
-}
-
-#geo-pin__C {
-  bottom: -10px;
-  height: 100px;
-  transform: translateX(-35%);
-}
-
 #geo-pin__pin {
   position: absolute;
   width: 30px;
