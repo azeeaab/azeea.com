@@ -84,12 +84,23 @@ function selectTab(num) {
 document.body.addEventListener('slider', ({value}) => {
   const bg = sliderBackground()
   const tabId = bg.element.classList[1]
-
-  const percentage = Math.round(value * 100)
-  mess().element.innerText = percentage
-
   const valueLabel = bg.child('value ' + tabId)
-  if (valueLabel) valueLabel.element.innerText = percentage
+  const percentage = Math.round(value * 100)
+
+  const text = labelText()
+  mess().element.innerText = text
+  if (valueLabel) valueLabel.element.innerText = text
+
+  function labelText() {
+    if (tabId == '_1')
+      return percentage < 20 ? '1km' :
+        percentage < 40 ? '10km' :
+        percentage < 60 ? '100km' :
+        percentage < 80 ? '500km' :
+              'anywhere'
+    else
+      return percentage
+  }
 })
 
 function displaySearch() {
@@ -130,9 +141,9 @@ const html = `
 </div>
 <div class="curtain"></div>
 
-<div class="value _1">50</div>
-<div class="value _2">50</div>
-<div class="value _3">50</div>
+<div class="value _1">100km</div>
+<div class="value _2">50%</div>
+<div class="value _3">50%</div>
 
 <button onclick="selectTab(1)" class="_1"></button>
 <button onclick="selectTab(2)" class="_2"></button>

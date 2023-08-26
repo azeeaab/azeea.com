@@ -158,10 +158,6 @@ video {
   background-color: #4d6f7e;
 }
 
-.search-panel .value::after {
-  content: '%';
-  font-family: Arial Narrow;}
-
 .search-panel .value {
   z-index: 1;
   background-color: black;
