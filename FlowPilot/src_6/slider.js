@@ -99,7 +99,7 @@ document.body.addEventListener('slider', ({value}) => {
         percentage < 80 ? '500km' :
               'anywhere'
     else
-      return percentage
+      return `${percentage}%`
   }
 })
 
@@ -137,7 +137,7 @@ const html = `
 <img class="slider toggle _2">
 <img class="slider toggle _3">
 <div class="tab" onpointerdown="startDragSliderTab(event)" onpointerup="stopDragSliderTab(event)" onpointermove="dragSliderTab(event)">
-  <div class="value mess">50</div>
+  <div class="value mess">50%</div>
 </div>
 <div class="curtain"></div>
 
