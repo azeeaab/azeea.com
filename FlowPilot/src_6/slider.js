@@ -76,7 +76,7 @@ function selectTab(num) {
 
   const label = bg.child(`value _${num}`)
   if (label) {
-    placeSliderTab(label.element.innerText / 100)
+    placeSliderTab(currentDisplay().tabPercentage(label))
     mess().element.innerText = label.element.innerText
   }
 }
@@ -87,20 +87,9 @@ document.body.addEventListener('slider', ({value}) => {
   const valueLabel = bg.child('value ' + tabId)
   const percentage = Math.round(value * 100)
 
-  const text = labelText()
+  const text = currentDisplay().labelText(percentage)
   mess().element.innerText = text
   if (valueLabel) valueLabel.element.innerText = text
-
-  function labelText() {
-    if (tabId == '_1')
-      return percentage < 20 ? '1km' :
-        percentage < 40 ? '10km' :
-        percentage < 60 ? '100km' :
-        percentage < 80 ? '500km' :
-              'anywhere'
-    else
-      return `${percentage}%`
-  }
 })
 
 function displaySearch() {
@@ -168,4 +157,42 @@ function injectSlider(parent, config) {
   parent.child('search s').element.src = config.s
   parent.child('search x').element.src = config.x
   parent.child('search main').element.src = config.main
+}
+
+
+function currentDisplay() {
+  const bg = sliderBackground()
+  const tabId = bg.element.classList[1]
+  return tabId == '_1' ? DISPLAY.location : DISPLAY.default
+}
+
+const DISPLAY = {
+  location: {
+    labelText: function (percentage) {
+      return percentage <= 20 ? '1km' :
+        percentage <= 40 ? '10km' :
+        percentage <= 60 ? '100km' :
+        percentage <= 80 ? '500km' :
+              'anywhere'
+    },
+
+    tabPercentage: function (innerText) {
+      switch (innerText) {
+        case '1km': return 0.20
+        case '10km': return 0.40
+        case '100km': return 0.60
+        case '500km': return 0.80
+        default: return 1.00
+      }
+    }
+  },
+  default: {
+    labelText: function (percentage) {
+      return `${percentage}%`
+    },
+
+    tabPercentage: function (innerText) {
+      return innerText.substring(0, innerText.length - 1) / 100
+    }
+  }
 }
