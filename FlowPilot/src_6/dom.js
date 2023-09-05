@@ -26,12 +26,11 @@ class DOMElement {
   }
 
   addClass(className) {
-    if (this.hasClass(className)) return
     this.element.classList.add(className)
   }
 
-  removeClasses(classNames) {
-    this.element.classList = [...this.element.classList].filter(x => !classNames.includes(x))
+  removeClass(className) {
+    this.element.classList.remove(className)
   }
 
   setClass(className) {
