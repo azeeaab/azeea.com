@@ -35,7 +35,8 @@ async function displayNextImage() {
   }
 
   image.positionAtTop()
-  document.body.appendChild(element)
+  const pin = document.getElementById('geo-pin')
+  pin.parentNode.insertBefore(element, pin.nextSibling)
 
   await delay(100)
   await image.positionInCenter()

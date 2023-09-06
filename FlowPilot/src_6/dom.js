@@ -48,6 +48,7 @@ class DOMElement {
   }
 
   display(b = true) {
+    if (this.isForcedHidden()) return;
     this.element.style.display = b ? 'block' : 'none'
   }
 
@@ -57,6 +58,14 @@ class DOMElement {
 
   isDisplayed() {
     return getComputedStyle(this.element).display !== 'none'
+  }
+
+  isForcedHidden() {
+    const isMobile = screen.width <= 480
+    if (!isMobile) return false
+    if (this.hasClass('avatar')) return true
+    if (this.element.tagName.toLowerCase() == 'video') return true
+    return false
   }
 }
 

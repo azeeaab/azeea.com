@@ -277,3 +277,22 @@ video {
   height: 400px;
   bottom: -60px;
 }
+
+@media (max-width: 480px) {
+  img {
+    position: static;
+    transition: opacity 0.6s ease-out;
+  }
+  img.portrait,
+  img.landscape {
+    width: 100%;
+    height: auto;
+  }
+
+  img.avatar,
+  img.friend,
+  #geo-pin,
+  video {
+    display: none;
+  }
+  }
