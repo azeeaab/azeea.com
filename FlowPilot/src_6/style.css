@@ -295,4 +295,15 @@ video {
   video {
     display: none;
   }
-  }
+}
+
+.search-term {
+  border-radius: 100px;
+  background-color: #12769d;
+  color: white;
+  position: absolute;
+  padding: 10px;
+  border: 2px solid;
+  top: 660px;
+  left: 680px;
+}

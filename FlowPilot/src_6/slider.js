@@ -142,7 +142,9 @@ const html = `
 <img class="search button x" onclick="hideSearch()">
 <img class="search main">
 
-<input>
+<form onsubmit="addSearchTerm(this.getElementsByTagName('input')[0].value); return false">
+  <input>
+</form>
 `
 
 injectSlider(DOMElement.id('slider-A'), sliders.A)
@@ -195,4 +197,11 @@ const DISPLAY = {
       return innerText.substring(0, innerText.length - 1) / 100
     }
   }
+}
+
+function addSearchTerm(term) {
+  const element = document.createElement('div')
+  element.innerText = term
+  element.className = 'search-term'
+  document.body.appendChild(element)
 }
