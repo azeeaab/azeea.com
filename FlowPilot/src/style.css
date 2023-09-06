@@ -1,0 +1,28 @@
+img.carousel {
+  width: 100%;
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+  position: absolute;
+}
+
+.login {
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 500px;
+  height: 270px;
+  width: 270px;
+}
+.login img {
+  margin-top: 10px;
+  margin-left: -66px;
+}
+.login a {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 140px;
+  height: 60px;
+}
