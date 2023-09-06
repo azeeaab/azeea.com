@@ -76,7 +76,7 @@ function selectTab(num) {
 
   const label = bg.child(`value _${num}`)
   if (label) {
-    placeSliderTab(currentDisplay().tabPercentage(label))
+    placeSliderTab(currentDisplay().tabPercentage(label.element.innerText))
     mess().element.innerText = label.element.innerText
   }
 }
