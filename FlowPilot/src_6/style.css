@@ -297,13 +297,18 @@ video {
   }
 }
 
+.pill-container {
+  position: absolute;
+  top: 160px;
+  height: 100px;
+  width: 600px;
+}
 .search-term {
   border-radius: 100px;
   background-color: #12769d;
   color: white;
-  position: absolute;
-  padding: 10px;
+  display: inline;
+  padding: 5px 10px;
   border: 2px solid;
-  top: 660px;
-  left: 680px;
+  margin-left: 5px;
 }

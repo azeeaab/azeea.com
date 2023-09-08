@@ -145,6 +145,7 @@ const html = `
 <form onsubmit="addSearchTerm(this.getElementsByTagName('input')[0].value); return false">
   <input>
 </form>
+<div class="pill-container"></div>
 `
 
 injectSlider(DOMElement.id('slider-A'), sliders.A)
@@ -203,5 +204,10 @@ function addSearchTerm(term) {
   const element = document.createElement('div')
   element.innerText = term
   element.className = 'search-term'
-  document.body.appendChild(element)
+  element.onclick = () => {
+    element.onclick = null
+    element.remove()
+    element = null
+  }
+  sliderBackground().child('pill-container').element.appendChild(element)
 }
