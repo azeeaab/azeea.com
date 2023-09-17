@@ -31,4 +31,24 @@ async function swingCarouselTo(nextId) {
   currentElement.style.opacity = 0
 }
 
+function checkPassword(event) {
+  const isAllowed = authenticator.login(email.value, password.value);
+  alert(isAllowed ? 'Welcome, friend' : 'Incorrect username or password')
+
+  if (isAllowed) location.href = 'flow_6.html'
+  event.preventDefault()
+  return false
+}
+
 function delay(millis) { return new Promise(resolve => { setTimeout(resolve, millis) }) }
+
+const authenticator = {
+  _credentials: {
+    'demo@azeea.com': { pass: 'forlife' }
+  },
+
+  login: function (enteredEmail, enteredPass) {
+    const user = this._credentials[enteredEmail]
+    return user && enteredPass === user.pass
+  }
+}
