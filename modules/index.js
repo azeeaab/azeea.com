@@ -39,6 +39,7 @@ function checkPassword(event) {
   event.preventDefault()
   return false
 }
+window.checkPassword = checkPassword
 
 function delay(millis) { return new Promise(resolve => { setTimeout(resolve, millis) }) }
 
