@@ -1,0 +1,56 @@
+img.carousel {
+  width: 100%;
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+  position: absolute;
+}
+
+.login {
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 500px;
+  height: 270px;
+  width: 270px;
+}
+.login img {
+  margin-top: 10px;
+  margin-left: -66px;
+}
+.login input[type="text"] {
+  position: absolute;
+  top: 77px;
+  left: 60px;
+  width: 185px;
+  height: 46px;
+  font-size: 12pt;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+.login input[type="password"] {
+  position: absolute;
+  top: 143px;
+  left: 60px;
+  width: 185px;
+  height: 46px;
+  font-size: 12pt;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+::placeholder {
+  color: lightblue;
+}
+.login input[type="submit"] {
+  position: absolute;
+  bottom: 10px;
+  right: 11px;
+  width: 140px;
+  height: 55px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

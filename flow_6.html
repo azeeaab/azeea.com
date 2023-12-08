@@ -1,0 +1,346 @@
+<html>
+<head>
+  <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+  <link rel="stylesheet" type="text/css" href="src_6/style.css">
+  <style type="text/css">
+#geo-pin__A {
+  left: -50%;
+  bottom: -10px;
+  height: 200px;
+}
+
+#geo-pin__B {
+  height: 200px;
+  bottom: -10px;
+  transform: translateX(-32%);
+}
+
+#geo-pin__C {
+  bottom: -10px;
+  height: 100px;
+  transform: translateX(-35%);
+}
+  </style>
+</head>
+<body style="background-color: darkslateblue;">
+
+  <div id="slider-A" class="search-panel _0"></div>
+  <div id="slider-B" class="search-panel _0"></div>
+  <div id="slider-C" class="search-panel _0"></div>
+
+  <img id="A" class="avatar A" src="./aqua_dude/img/avatar.png">
+  <img id="B" class="avatar B" src="./tennis_queen/img/avatar.png">
+  <img id="C" class="avatar C" src="./basket_jr/img/avatar.png">
+  <video id="video_A" src="./aqua_dude/video/approach.mp4"></video>
+  <video id="video_B" src="./tennis_queen/video/approach.mp4"></video>
+  <video id="video_C" src="./basket_jr/video/approach.mp4"></video>
+  <audio id="audio" src="516_full_disco-beach_0145.mp3"></audio>
+  <button onclick="setSelectedAvatar('A')" class="avatar A"></button>
+  <button onclick="setSelectedAvatar('B')" class="avatar B"></button>
+  <button onclick="setSelectedAvatar('C')" class="avatar C"></button>
+
+  <div id="geo-pin">
+    <div id="geo-pin__pin" class="up">
+      <img id="geo-pin__A" src="SurfinBoard pin.png">
+      <img id="geo-pin__B" src="Tennis pin.png">
+      <img id="geo-pin__C" src="Basketball pin.png">
+    </div>
+    <img id="geo-pin__spot" src="Graphics/GeoPin Anim-pics/2 GeoSpot.png">
+    <div id="geo-pin__centerer">
+      <img id="geo-pin__shadow" src="Graphics/GeoPin Anim-pics/3 GeoShadow.png" class="up">
+    </div>
+
+    <img class="friend C" src="./Graphics/FriendAvatar-C1.png">
+  </div>
+
+  <script type="text/javascript"><!--
+  // Configuration
+const sliders = {
+  A: {
+    sliders: [
+      "./Graphics/slider-A0.png",
+      "./Graphics/slider-A1.png",
+      "./Graphics/slider-A2.png",
+      "./Graphics/slider-A3.png",
+    ],
+
+    s: "./Graphics/search-s.png",
+    x: "./Graphics/search-x.png",
+    main: "./Graphics/Search.png",
+  },
+  B: {
+    sliders: [
+      "./Graphics/slider-B0.png",
+      "./Graphics/slider-B1.png",
+      "./Graphics/slider-B2.png",
+      "./Graphics/slider-B3.png",
+    ],
+
+    s: "./Graphics/search-s B.png",
+    x: "./Graphics/search-x B.png",
+    main: "./Graphics/Search B.png",
+  },
+  C: {
+    sliders: [
+      "./Graphics/slider-C0.png",
+      "./Graphics/slider-C1.png",
+      "./Graphics/slider-C2.png",
+      "./Graphics/slider-C3.png",
+    ],
+
+    s: "./Graphics/search-s C.png",
+    x: "./Graphics/search-x-C.png",
+    main: "./Graphics/Search C.png",
+  },
+}
+
+const videoConfig = {
+  A: {
+    endTime: 15,
+    pinImage: 'SurfinBoard pin.png',
+  },
+  B: {
+    endTime: 15,
+    pinImage: 'Tennis pin.png',
+  },
+  C: {
+    endTime: 28,
+    pinImage: 'Basketball pin.png',
+  },
+}
+
+const images = [
+  {
+    src: './DummyGraphics/Beachen.png',
+    width: 2865,
+    height: 1852,
+  }, {
+    src: './DummyGraphics/Bicycle.png',
+    width: 2987,
+    height: 1920,
+  }, {
+    src: './DummyGraphics/Canoeing1.png',
+    width: 3985,
+    height: 2533,
+  }, {
+    src: './DummyGraphics/Canoeing2.png',
+    width: 4213,
+    height: 2556,
+  }, {
+    src: './DummyGraphics/Divers.png',
+    width: 4103,
+    height: 2517,
+  }, {
+    src: './DummyGraphics/Havslandskap.png',
+    width: 3299,
+    height: 1414,
+  }, {
+    src: './DummyGraphics/Kayaking.png',
+    width: 3625,
+    height: 1637,
+  }, {
+    src: './DummyGraphics/Sailboat.png',
+    width: 4173,
+    height: 1946,
+  }, {
+    src: './DummyGraphics/Skatare.png',
+    width: 3433,
+    height: 1949,
+  }, {
+    src: './DummyGraphics/Snorkeling1.png',
+    width: 3496,
+    height: 2480,
+  }, {
+    src: './DummyGraphics/Snorkeling2.png',
+    width: 3044,
+    height: 1979,
+  }, {
+    src: './DummyGraphics/StandPaddel.png',
+    width: 2215,
+    height: 2052,
+  }, {
+    src: './DummyGraphics/Surfare.png',
+    width: 2538,
+    height: 3935,
+  }, {
+    src: './DummyGraphics/WaveSurfer.png',
+    width: 4189,
+    height: 2542,
+  }, {
+    src: './DummyGraphics/RioApe.png',
+    width: 1962,
+    height: 1428,
+  }, {
+    src: './DummyGraphics/RioArt.png',
+    width: 2350,
+    height: 1234,
+  }, {
+    src: './DummyGraphics/RioBeach.png',
+    width: 1452,
+    height: 1400,
+  }, {
+    src: './DummyGraphics/RioBeach2.png',
+    width: 1660,
+    height: 1114,
+  }, {
+    src: './DummyGraphics/RioBeach3.png',
+    width: 1538,
+    height: 998,
+  }, {
+    src: './DummyGraphics/RioBeach4.png',
+    width: 2024,
+    height: 1068,
+  }, {
+    src: './DummyGraphics/RioBeach5.png',
+    width: 1744,
+    height: 878,
+  }, {
+    src: './DummyGraphics/RioBeachBall.png',
+    width: 2162,
+    height: 1372,
+  }, {
+    src: './DummyGraphics/RioBeachGame.png',
+    width: 1760,
+    height: 1072,
+  }, {
+    src: './DummyGraphics/RioBeachGame2.png',
+    width: 1200,
+    height: 808,
+  }, {
+    src: './DummyGraphics/RioBeachView.png',
+    width: 1420,
+    height: 934,
+  }, {
+    src: './DummyGraphics/RioBeachWalk.png',
+    width: 2196,
+    height: 1464,
+  }, {
+    src: './DummyGraphics/RioCableCar.png',
+    width: 2234,
+    height: 1408,
+  }, {
+    src: './DummyGraphics/RioCableCar2.png',
+    width: 3090,
+    height: 1496,
+  }, {
+    src: './DummyGraphics/RioCarneval.png',
+    width: 2262,
+    height: 1240,
+  }, {
+    src: './DummyGraphics/RioFlamingo.png',
+    width: 2272,
+    height: 1308,
+  }, {
+    src: './DummyGraphics/RioForest.png',
+    width: 2208,
+    height: 1414,
+  }, {
+    src: './DummyGraphics/RioForest2.png',
+    width: 3100,
+    height: 1250,
+  }, {
+    src: './DummyGraphics/RioMiniPagoda.png',
+    width: 2252,
+    height: 1376,
+  }, {
+    src: './DummyGraphics/RioMonkey.png',
+    width: 2134,
+    height: 1324,
+  }, {
+    src: './DummyGraphics/RioParagliding.png',
+    width: 1690,
+    height: 1032,
+  }, {
+    src: './DummyGraphics/RioPark.png',
+    width: 2338,
+    height: 1238,
+  }, {
+    src: './DummyGraphics/RioPark2.png',
+    width: 2364,
+    height: 1268,
+  }, {
+    src: './DummyGraphics/RioParrot.png',
+    width: 2456,
+    height: 1326,
+  }, {
+    src: './DummyGraphics/RioPool.png',
+    width: 2316,
+    height: 1228,
+  }, {
+    src: './DummyGraphics/RioStadium.png',
+    width: 2642,
+    height: 1496,
+  }, {
+    src: './DummyGraphics/RioStatue.png',
+    width: 1920,
+    height: 1108,
+  }, {
+    src: './DummyGraphics/RioStatue2.png',
+    width: 2380,
+    height: 1450,
+  }, {
+    src: './DummyGraphics/RioStatue3.png',
+    width: 2134,
+    height: 1324,
+  }, {
+    src: './DummyGraphics/RioStatue4.png',
+    width: 1942,
+    height: 1268,
+  }, {
+    src: './DummyGraphics/RioSunSurf.png',
+    width: 2020,
+    height: 1252,
+  }, {
+    src: './DummyGraphics/RioSurf.png',
+    width: 1884,
+    height: 1324,
+  }, {
+    src: './DummyGraphics/RioTennisCourt.png',
+    width: 2356,
+    height: 1126,
+  }, {
+    src: './DummyGraphics/RioTennisCourt2.png',
+    width: 2008,
+    height: 1370,
+  }, {
+    src: './DummyGraphics/RioTukan.png',
+    width: 2104,
+    height: 1434,
+  }, {
+    src: './DummyGraphics/RioWater.png',
+    width: 2136,
+    height: 1326,
+  }, {
+    src: './DummyGraphics/RioWaterfall.png',
+    width: 1962,
+    height: 1382,
+  }
+]
+
+const flows = {
+  A: [
+    images[0],
+    images[12],
+    images[13],
+  ],
+  B: [
+    images[14],
+    images[50],
+    images[46],
+    images[47],
+    images[48],
+  ],
+  C: [
+    images[4],
+    images[7],
+    images[9],
+  ]
+}
+  --></script>
+  <script type="text/javascript" src="src_6/dom.js"></script>
+  <script type="text/javascript" src="src_6/rain.js"></script>
+  <script type="text/javascript" src="src_6/slider.js"></script>
+  <script type="text/javascript" src="src_6/flow.js"></script>
+  <script type="text/javascript" src="src_6/falling-image.js"></script>
+</body>
+</html>
