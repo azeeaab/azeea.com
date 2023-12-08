@@ -31,7 +31,7 @@ async function swingCarouselTo(nextId) {
   currentElement.style.opacity = 0
 }
 
-function checkPassword(event) {
+export function checkPassword(event) {
   const isAllowed = authenticator.login(email.value, password.value);
   alert(isAllowed ? 'Welcome, friend' : 'Incorrect username or password')
 
@@ -39,7 +39,6 @@ function checkPassword(event) {
   event.preventDefault()
   return false
 }
-window.checkPassword = checkPassword
 
 function delay(millis) { return new Promise(resolve => { setTimeout(resolve, millis) }) }
 

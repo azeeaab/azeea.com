@@ -1,6 +1,8 @@
+import { randomInt } from "./rain.js"
+
 const IMAGE_POSITION_TIME = 2000
 
-class FallingImageElement {
+export class FallingImageElement {
   element
   isDismissed = false
 
@@ -23,7 +25,7 @@ class FallingImageElement {
     this.element.style.opacity = '1'
     await delay(IMAGE_POSITION_TIME)
   }
-  
+
   async positionAsSelected() {
     this.element.style.top = '75vh'
     this.element.style.left = '15vw'
@@ -39,3 +41,5 @@ class FallingImageElement {
     this.element.remove()
   }
 }
+
+function delay(millis) { return new Promise(resolve => { setTimeout(resolve, millis) }) }

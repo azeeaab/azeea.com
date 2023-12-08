@@ -1,10 +1,12 @@
+import { FallingImageElement } from "./falling-image.js"
+
 let selectedImage = null
 const fallingImages = []
 setTimeout(displayNextImage, 10)
 
 var flowName
-function selectedFlow() { return flowName }
-function selectFlow(name) { flowName = name }
+export function selectedFlow() { return flowName }
+export function selectFlow(name) { flowName = name }
 
 async function displayNextImage() {
   // Calling itself in a setTimeout works sort-of like
@@ -72,5 +74,5 @@ function randomImage() {
 }
 
 function createImgElement() { return document.createElement('img') }
-function randomInt(max) { return Math.floor(Math.random() * max) }
+export function randomInt(max) { return Math.floor(Math.random() * max) }
 function delay(millis) { return new Promise(resolve => { setTimeout(resolve, millis); }) }

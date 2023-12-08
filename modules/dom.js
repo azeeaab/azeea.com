@@ -1,4 +1,4 @@
-class DOMElement {
+export class DOMElement {
   /** @type {Element} */ element
 
   constructor(element) {
@@ -69,7 +69,7 @@ class DOMElement {
   }
 }
 
-class DOMMediaElement extends DOMElement {
+export class DOMMediaElement extends DOMElement {
   static id(id) {
     return new DOMMediaElement(document.getElementById(id))
   }

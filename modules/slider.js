@@ -1,3 +1,6 @@
+import { selectedFlow } from "./rain.js"
+import { DOMElement } from './dom.js'
+
 const minX = 24
 const maxX = 473
 const tabHalfWidth = 5
@@ -12,13 +15,13 @@ function placeSliderTab(loc) {
   curtain().element.style.width = `${x - minX - 2}px`
 }
 
-function startDragSliderTab(e) {
+export function startDragSliderTab(e) {
   const {pageX, pageY} = e
   slider_state.dragOrigin = {pageX, pageY}
   e.target.setPointerCapture(e.pointerId)
 }
 
-function dragSliderTab(e) {
+export function dragSliderTab(e) {
   if (!slider_state.dragOrigin) return
 
   const {pageX} = e
@@ -40,7 +43,7 @@ class SliderEvent extends Event {
   }
 }
 
-function stopDragSliderTab(e) {
+export function stopDragSliderTab(e) {
   slider_state.dragOrigin = null
   e.target.releasePointerCapture(e.pointerId)
 }
@@ -61,7 +64,7 @@ function curtain() {
   return sliderBackground().child('curtain')
 }
 
-function selectTab(num) {
+export function selectTab(num) {
   for (const slider of DOMElement.className('search-panel')) {
     slider.hide()
   }
@@ -92,13 +95,13 @@ document.body.addEventListener('slider', ({value}) => {
   if (valueLabel) valueLabel.element.innerText = text
 })
 
-function displaySearch() {
+export function displaySearch() {
   searchSButton().hide()
   searchXButton().display()
   searchMainArea().display()
 }
 
-function hideSearch() {
+export function hideSearch() {
   searchSButton().display()
   searchXButton().hide()
   searchMainArea().hide()
@@ -155,7 +158,7 @@ injectSlider(DOMElement.id('slider-C'), sliders.C)
 function injectSlider(parent, config) {
   parent.element.innerHTML = html
 
-  for (i = 0; i < 4; i++)
+  for (let i = 0; i < 4; i++)
     parent.child(`toggle _${i}`).element.src = config.sliders[i]
   parent.child('search s').element.src = config.s
   parent.child('search x').element.src = config.x
@@ -200,14 +203,13 @@ const DISPLAY = {
   }
 }
 
-function addSearchTerm(term) {
+export function addSearchTerm(term) {
   const element = document.createElement('div')
   element.innerText = term
   element.className = 'search-term'
   element.onclick = () => {
     element.onclick = null
     element.remove()
-    element = null
   }
   sliderBackground().child('pill-container').element.appendChild(element)
 }

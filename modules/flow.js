@@ -1,7 +1,11 @@
+import { hideSearch, selectTab } from './slider.js'
+import { selectFlow, selectedFlow } from './rain.js'
+import { DOMElement, DOMMediaElement } from './dom.js'
+
 setSelectedAvatar('A')
 hideSearch()
 
-function setSelectedAvatar(id) {
+export function setSelectedAvatar(id) {
   selectFlow(id)
   selectTab(0)
   DOMElement.id('geo-pin').hide()

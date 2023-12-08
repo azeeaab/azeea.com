@@ -53,7 +53,23 @@
     <img class="friend C" src="./Graphics/FriendAvatar-C1.png">
   </div>
 
-  <script type="text/javascript"><!--
+  <script type="module">
+import { setSelectedAvatar } from './modules/flow.js'
+import {
+  selectTab, startDragSliderTab, dragSliderTab, stopDragSliderTab,
+  displaySearch, hideSearch, addSearchTerm,
+} from './modules/slider.js'
+
+window.selectTab = selectTab
+window.setSelectedAvatar = setSelectedAvatar
+window.startDragSliderTab = startDragSliderTab
+window.dragSliderTab = dragSliderTab
+window.stopDragSliderTab = stopDragSliderTab
+window.displaySearch = displaySearch
+window.hideSearch = hideSearch
+window.addSearchTerm = addSearchTerm
+  </script>
+  <script type="text/javascript">
   // Configuration
 const sliders = {
   A: {
@@ -336,11 +352,6 @@ const flows = {
     images[9],
   ]
 }
-  --></script>
-  <script type="text/javascript" src="src_6/dom.js"></script>
-  <script type="text/javascript" src="src_6/rain.js"></script>
-  <script type="text/javascript" src="src_6/slider.js"></script>
-  <script type="text/javascript" src="src_6/flow.js"></script>
-  <script type="text/javascript" src="src_6/falling-image.js"></script>
+  </script>
 </body>
 </html>

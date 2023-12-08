@@ -27,5 +27,8 @@
     </form>
   </div>
 </body>
-<script type="module" src="./modules/index.js"></script>
+<script type="module">
+import { checkPassword } from './modules/index.js'
+window.checkPassword = checkPassword
+</script>
 </html>
