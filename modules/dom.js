@@ -1,3 +1,7 @@
+export const domExport = (value, variableName) => {
+  window[variableName] = value
+}
+
 export class DOMElement {
   /** @type {Element} */ element
 

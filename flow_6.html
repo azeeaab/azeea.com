@@ -49,23 +49,11 @@
     <img class="friend C" src="./Graphics/FriendAvatar-C1.png">
   </div>
 
-  <script type="module"> // TODO: argh!
-import {} from './modules/flow.js'
-import { selectAvatar } from './modules/selected-avatar.js'
-import {
-  selectTab, startDragSliderTab, dragSliderTab, stopDragSliderTab,
-  displaySearch, hideSearch, addSearchTerm,
-} from './modules/slider.js'
-
-window.selectTab = selectTab
-window.selectAvatar = selectAvatar
-window.startDragSliderTab = startDragSliderTab
-window.dragSliderTab = dragSliderTab
-window.stopDragSliderTab = stopDragSliderTab
-window.displaySearch = displaySearch
-window.hideSearch = hideSearch
-  </script>
   <script type="module">
+  // TODO: These shouldn't have to be imported. Possible?
+    import {} from './modules/flow.js'   // Display the selected avatar
+    import {} from './modules/slider.js' // Display the search UI
+
 import { selectAvatar } from './modules/selected-avatar.js'
 import { mapAvatars } from './modules/config.js'
 import { start } from './modules/rain.js'

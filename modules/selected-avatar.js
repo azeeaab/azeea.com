@@ -1,4 +1,5 @@
 import { avatarName, config } from "./config.js"
+import { domExport } from "./dom.js"
 
 export const selectedAvatar = () => selectedId
 
@@ -9,6 +10,7 @@ export const selectAvatar = id => {
     new AvatarChangedEvent(selectedId, avatarName(id), config(id))
   )
 }
+domExport(selectAvatar, 'selectAvatar')
 
 let selectedId
 

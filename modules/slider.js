@@ -1,4 +1,4 @@
-import { DOMElement } from './dom.js'
+import { DOMElement, domExport } from './dom.js'
 import { sliderImages as slidersA } from "../aqua_dude/config.js"
 import { sliderImages as slidersB } from "../tennis_queen/config.js"
 import { sliderImages as slidersC } from "../basket_jr/config.js"
@@ -26,13 +26,13 @@ function placeSliderTab(loc) {
   curtain().element.style.width = `${x - minX - 2}px`
 }
 
-export function startDragSliderTab(e) {
+domExport(e => {
   const {pageX, pageY} = e
   slider_state.dragOrigin = {pageX, pageY}
   e.target.setPointerCapture(e.pointerId)
-}
+}, 'startDragSliderTab')
 
-export function dragSliderTab(e) {
+domExport(e => {
   if (!slider_state.dragOrigin) return
 
   const {pageX} = e
@@ -45,7 +45,7 @@ export function dragSliderTab(e) {
   document.body.dispatchEvent(
     new SliderEvent((clampedX - minX) / (maxX - minX))
   )
-}
+}, 'dragSliderTab')
 
 class SliderEvent extends Event {
   constructor(value) {
@@ -54,10 +54,10 @@ class SliderEvent extends Event {
   }
 }
 
-export function stopDragSliderTab(e) {
+domExport(e => {
   slider_state.dragOrigin = null
   e.target.releasePointerCapture(e.pointerId)
-}
+}, 'stopDragSliderTab')
 
 function sliderBackground() {
   return DOMElement.single(`#slider-${selectedAvatar()}`)
@@ -75,7 +75,7 @@ function curtain() {
   return sliderBackground().child('.curtain')
 }
 
-export function selectTab(num) {
+function selectTab(num) {
   for (const slider of DOMElement.all('.search-panel')) {
     slider.hide()
   }
@@ -94,6 +94,7 @@ export function selectTab(num) {
     mess().element.innerText = label.element.innerText
   }
 }
+domExport(selectTab, 'selectTab')
 
 document.body.addEventListener('slider', ({value}) => {
   const bg = sliderBackground()
@@ -106,17 +107,17 @@ document.body.addEventListener('slider', ({value}) => {
   if (valueLabel) valueLabel.element.innerText = text
 })
 
-export function displaySearch() {
+domExport(() => {
   searchSButton().hide()
   searchXButton().display()
   searchMainArea().display()
-}
+}, 'displaySearch')
 
-export function hideSearch() {
+domExport(() => {
   searchSButton().display()
   searchXButton().hide()
   searchMainArea().hide()
-}
+}, 'hideSearch')
 
 function searchSButton() {
   return sliderBackground().child('.button.s')
@@ -214,7 +215,7 @@ const DISPLAY = {
   }
 }
 
-export function addSearchTerm(term) {
+domExport(term => {
   const element = document.createElement('div')
   element.innerText = term
   element.className = 'search-term'
@@ -223,4 +224,4 @@ export function addSearchTerm(term) {
     element.remove()
   }
   sliderBackground().child('.pill-container').element.appendChild(element)
-}
+}, 'addSearchTerm')
