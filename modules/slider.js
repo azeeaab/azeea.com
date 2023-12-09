@@ -49,7 +49,7 @@ export function stopDragSliderTab(e) {
 }
 
 function sliderBackground() {
-  return DOMElement.id(`slider-${selectedFlow()}`)
+  return DOMElement.single(`#slider-${selectedFlow()}`)
 }
 
 function sliderBoundingRect() {
@@ -57,15 +57,15 @@ function sliderBoundingRect() {
 }
 
 function tab() {
-  return sliderBackground().child('tab')
+  return sliderBackground().child('.tab')
 }
 
 function curtain() {
-  return sliderBackground().child('curtain')
+  return sliderBackground().child('.curtain')
 }
 
 export function selectTab(num) {
-  for (const slider of DOMElement.className('search-panel')) {
+  for (const slider of DOMElement.all('.search-panel')) {
     slider.hide()
   }
 
@@ -77,7 +77,7 @@ export function selectTab(num) {
   bg.setClass('search-panel')
   bg.addClass(!num || wasSelected ? '_0' : tabId)
 
-  const label = bg.child(`value _${num}`)
+  const label = bg.child(`.value._${num}`)
   if (label) {
     placeSliderTab(currentDisplay().tabPercentage(label.element.innerText))
     mess().element.innerText = label.element.innerText
@@ -87,7 +87,7 @@ export function selectTab(num) {
 document.body.addEventListener('slider', ({value}) => {
   const bg = sliderBackground()
   const tabId = bg.element.classList[1]
-  const valueLabel = bg.child('value ' + tabId)
+  const valueLabel = bg.child(`.value.${tabId}`)
   const percentage = Math.round(value * 100)
 
   const text = currentDisplay().labelText(percentage)
@@ -108,19 +108,19 @@ export function hideSearch() {
 }
 
 function searchSButton() {
-  return sliderBackground().child('button s')
+  return sliderBackground().child('.button.s')
 }
 
 function searchXButton() {
-  return sliderBackground().child('button x')
+  return sliderBackground().child('.button.x')
 }
 
 function searchMainArea() {
-  return sliderBackground().child('main')
+  return sliderBackground().child('.main')
 }
 
 function mess() {
-  return sliderBackground().child('mess')
+  return sliderBackground().child('.mess')
 }
 
 const html = `
@@ -145,24 +145,24 @@ const html = `
 <img class="search button x" onclick="hideSearch()">
 <img class="search main">
 
-<form onsubmit="addSearchTerm(this.getElementsByTagName('input')[0].value); return false">
+<form onsubmit="addSearchTerm(this.querySelectorAll('input')[0].value); return false">
   <input>
 </form>
 <div class="pill-container"></div>
 `
 
-injectSlider(DOMElement.id('slider-A'), sliders.A)
-injectSlider(DOMElement.id('slider-B'), sliders.B)
-injectSlider(DOMElement.id('slider-C'), sliders.C)
+injectSlider(DOMElement.single('#slider-A'), sliders.A)
+injectSlider(DOMElement.single('#slider-B'), sliders.B)
+injectSlider(DOMElement.single('#slider-C'), sliders.C)
 
 function injectSlider(parent, config) {
   parent.element.innerHTML = html
 
   for (let i = 0; i < 4; i++)
-    parent.child(`toggle _${i}`).element.src = config.sliders[i]
-  parent.child('search s').element.src = config.s
-  parent.child('search x').element.src = config.x
-  parent.child('search main').element.src = config.main
+    parent.child(`.toggle._${i}`).element.src = config.sliders[i]
+  parent.child('.search.s').element.src = config.s
+  parent.child('.search.x').element.src = config.x
+  parent.child('.search.main').element.src = config.main
 }
 
 
@@ -211,5 +211,5 @@ export function addSearchTerm(term) {
     element.onclick = null
     element.remove()
   }
-  sliderBackground().child('pill-container').element.appendChild(element)
+  sliderBackground().child('.pill-container').element.appendChild(element)
 }

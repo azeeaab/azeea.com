@@ -7,17 +7,12 @@ export class DOMElement {
     Object.freeze(this)
   }
 
-  static id(id) {
-    return new DOMElement(document.getElementById(id))
+  static single(selector) {
+    return new DOMElement(document.querySelector(selector))
   }
 
-  static tagName(tagName) {
-    return [...document.getElementsByTagName(tagName)]
-      .map(el => new DOMElement(el))
-  }
-
-  static className(className) {
-    return [...document.getElementsByClassName(className)]
+  static all(selector) {
+    return [...document.querySelectorAll(selector)]
       .map(el => new DOMElement(el))
   }
 
@@ -37,13 +32,13 @@ export class DOMElement {
     return this.element.className = className
   }
 
-  child(className) {
-    const children = this.element.getElementsByClassName(className)
-    return (children.length || null) && new DOMElement(children[0])
+  child(selector) {
+    var el = this.element.querySelector(selector)
+    return el ? new DOMElement(el) : null
   }
 
-  children(className) {
-    return [...this.element.getElementsByClassName(className)]
+  children(selector) {
+    return [...this.element.querySelectorAll(selector)]
       .map(el => new DOMElement(el))
   }
 
@@ -70,8 +65,8 @@ export class DOMElement {
 }
 
 export class DOMMediaElement extends DOMElement {
-  static id(id) {
-    return new DOMMediaElement(document.getElementById(id))
+  static single(selector) {
+    return new DOMMediaElement(document.querySelector(selector))
   }
 
   playFromBeginning() {
