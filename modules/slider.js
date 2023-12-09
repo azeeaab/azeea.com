@@ -12,6 +12,10 @@ const slider_state = {
   dragOrigin: null,
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  hideSearch()
+})
+
 function placeSliderTab(loc) {
   const x = loc * (maxX - minX) + minX
   tab().element.style.left = `${x}px`

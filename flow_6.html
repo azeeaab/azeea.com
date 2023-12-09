@@ -31,9 +31,9 @@
   <img id="avatar">
   <video id="video"></video>
   <audio id="audio" src="516_full_disco-beach_0145.mp3"></audio>
-  <button onclick="setSelectedAvatar('A')" class="avatar A"></button>
-  <button onclick="setSelectedAvatar('B')" class="avatar B"></button>
-  <button onclick="setSelectedAvatar('C')" class="avatar C"></button>
+  <button onclick="selectAvatar('A')" class="avatar A"></button>
+  <button onclick="selectAvatar('B')" class="avatar B"></button>
+  <button onclick="selectAvatar('C')" class="avatar C"></button>
 
   <div id="geo-pin">
     <div id="geo-pin__pin" class="up">
@@ -50,7 +50,8 @@
   </div>
 
   <script type="module">
-import { setSelectedAvatar } from './modules/flow.js'
+import {} from './modules/flow.js'
+import { selectAvatar } from './modules/selected-avatar.js'
 import {
   selectTab, startDragSliderTab, dragSliderTab, stopDragSliderTab,
   displaySearch, hideSearch, addSearchTerm,
@@ -59,7 +60,7 @@ import { mapAvatars } from './modules/config.js'
 import { start } from './modules/rain.js'
 
 window.selectTab = selectTab
-window.setSelectedAvatar = setSelectedAvatar
+window.selectAvatar = selectAvatar
 window.startDragSliderTab = startDragSliderTab
 window.dragSliderTab = dragSliderTab
 window.stopDragSliderTab = stopDragSliderTab
@@ -73,6 +74,7 @@ mapAvatars({
   C: 'basket_jr',
 })
 
+selectAvatar('A')
 start()
   </script>
   <script type="text/javascript">
