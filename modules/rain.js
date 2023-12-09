@@ -1,5 +1,4 @@
 import { FallingImageElement } from "./falling-image.js"
-import { selectedAvatar } from "./selected-avatar.js"
 
 export const start = () => {
   displayNextImage()

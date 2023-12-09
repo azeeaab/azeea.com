@@ -1,4 +1,5 @@
 import { DOMElement, domExport } from './dom.js'
+import { searchPercentage, searchValue, setSearchValue, tabId } from './search.js'
 
 const minX = 24
 const maxX = 473
@@ -12,6 +13,7 @@ let currentConfig
 
 document.addEventListener('avatar-changed', e => {
   currentConfig = e.config.sliderImages
+  injectSlider(DOMElement.single('#slider'))
   selectTab(0)
 })
 
@@ -19,10 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
   hideSearch()
 })
 
+document.addEventListener('search-changed', ({ state, value, percentage }) => {
+  const bg = sliderBackground()
+  const valueLabel = bg.child(`.value.${tabId(state)}`)
+  if (valueLabel) valueLabel.element.innerText = value
+  mess().element.innerText = value
+  placeSliderTab(percentage)
+})
+
 function placeSliderTab(loc) {
   const x = loc * (maxX - minX) + minX
   tab().element.style.left = `${x}px`
-  curtain().element.style.width = `${x - minX - 2}px`
+  curtain().element.style.width = `${Math.max(0, x - minX - 2)}px`
 }
 
 domExport(e => {
@@ -38,20 +48,9 @@ domExport(e => {
   const elementX = pageX - sliderBoundingRect().x - tabHalfWidth
 
   const clampedX = Math.min(Math.max(elementX, minX), maxX)
-  tab().element.style.left = `${clampedX}px`
-  curtain().element.style.width = `${clampedX - minX - 2}px`
-
-  document.body.dispatchEvent(
-    new SliderEvent((clampedX - minX) / (maxX - minX))
-  )
+  const value = (clampedX - minX) / (maxX - minX)
+  setSearchValue(value, document.querySelector('#slider').classList[1])
 }, 'dragSliderTab')
-
-class SliderEvent extends Event {
-  constructor(value) {
-    super('slider')
-    this.value = value
-  }
-}
 
 domExport(e => {
   slider_state.dragOrigin = null
@@ -75,34 +74,20 @@ function curtain() {
 }
 
 function selectTab(num) {
-  injectSlider(DOMElement.single('#slider'))
-
-  const tabId = `_${num}`
+  const clickedTabId = `_${num}`
   const bg = sliderBackground()
-  const wasSelected = bg.hasClass(tabId)
+  const wasSelected = bg.hasClass(clickedTabId)
 
   bg.display()
   bg.setClass('search-panel')
-  bg.addClass(!num || wasSelected ? '_0' : tabId)
 
-  const label = bg.child(`.value._${num}`)
-  if (label) {
-    placeSliderTab(currentDisplay().tabPercentage(label.element.innerText))
-    mess().element.innerText = label.element.innerText
-  }
+  const tabId = !num || wasSelected ? '_0' : clickedTabId
+  bg.addClass(tabId)
+
+  placeSliderTab(searchPercentage(tabId))
+  mess().element.innerText = searchValue(tabId)
 }
 domExport(selectTab, 'selectTab')
-
-document.body.addEventListener('slider', ({value}) => {
-  const bg = sliderBackground()
-  const tabId = bg.element.classList[1]
-  const valueLabel = bg.child(`.value.${tabId}`)
-  const percentage = Math.round(value * 100)
-
-  const text = currentDisplay().labelText(percentage)
-  mess().element.innerText = text
-  if (valueLabel) valueLabel.element.innerText = text
-})
 
 domExport(() => {
   searchSButton().hide()
@@ -168,44 +153,6 @@ function injectSlider(parent) {
   parent.child('.search.s').element.src = currentConfig.s
   parent.child('.search.x').element.src = currentConfig.x
   parent.child('.search.main').element.src = currentConfig.main
-}
-
-
-function currentDisplay() {
-  const bg = sliderBackground()
-  const tabId = bg.element.classList[1]
-  return tabId == '_1' ? DISPLAY.location : DISPLAY.default
-}
-
-const DISPLAY = {
-  location: {
-    labelText: function (percentage) {
-      return percentage <= 20 ? '1km' :
-        percentage <= 40 ? '10km' :
-        percentage <= 60 ? '100km' :
-        percentage <= 80 ? '500km' :
-              'anywhere'
-    },
-
-    tabPercentage: function (innerText) {
-      switch (innerText) {
-        case '1km': return 0.20
-        case '10km': return 0.40
-        case '100km': return 0.60
-        case '500km': return 0.80
-        default: return 1.00
-      }
-    }
-  },
-  default: {
-    labelText: function (percentage) {
-      return `${percentage}%`
-    },
-
-    tabPercentage: function (innerText) {
-      return innerText.substring(0, innerText.length - 1) / 100
-    }
-  }
 }
 
 domExport(term => {
