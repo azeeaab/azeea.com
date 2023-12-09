@@ -2,6 +2,15 @@ import { hideSearch, selectTab } from './slider.js'
 import { selectFlow, selectedFlow } from './rain.js'
 import { DOMElement, DOMMediaElement } from './dom.js'
 
+import { videoConfig as videoConfigA } from '../aqua_dude/config.js'
+import { videoConfig as videoConfigB } from '../tennis_queen/config.js'
+import { videoConfig as videoConfigC } from '../basket_jr/config.js'
+const videoConfig = {
+  A: videoConfigA,
+  B: videoConfigB,
+  C: videoConfigC,
+}
+
 setSelectedAvatar('A')
 hideSearch()
 

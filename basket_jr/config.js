@@ -9,3 +9,5 @@ export const sliderImages = {
   x: "./Graphics/search-x-C.png",
   main: "./Graphics/Search C.png",
 }
+
+export const videoConfig = { endTime: 28 }
