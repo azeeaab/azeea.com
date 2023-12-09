@@ -1,5 +1,3 @@
-import { selectTab } from './slider.js'
-import { selectFlow, selectedFlow } from './rain.js'
 import { DOMElement, DOMMediaElement } from './dom.js'
 
 document.addEventListener('avatar-changed', e => {
@@ -12,9 +10,6 @@ document.addEventListener('avatar-changed', e => {
   DOMElement.single('#avatar').element.className = `avatar ${e.id}`
 
   currentConfig = { ...e.config.videoConfig, id: e.id }
-
-  selectFlow(e.id)
-  selectTab(0)
   DOMElement.single('#geo-pin').hide()
 });
 
@@ -27,7 +22,7 @@ video.addEventListener('timeupdate', () => {
     video.pause()
 
     for (const friend of pin.children('.friend'))
-      friend.display(friend.hasClass(selectedFlow()))
+      friend.display(friend.hasClass(e.id))
   }
 }, false);
 

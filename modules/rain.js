@@ -1,15 +1,12 @@
 import { FallingImageElement } from "./falling-image.js"
+import { selectedAvatar } from "./selected-avatar.js"
 
 export const start = () => {
   displayNextImage()
 }
 
 let selectedImage = null
-let flowName
 const fallingImages = []
-
-export function selectedFlow() { return flowName }
-export function selectFlow(name) { flowName = name }
 
 async function displayNextImage() {
   // Calling itself in a setTimeout works sort-of like
@@ -72,7 +69,7 @@ async function dismissImage(element) {
 }
 
 function randomImage() {
-  const flow = (flowName && flows[flowName]) ?? images
+  const flow = (selectedAvatar() && flows[selectedAvatar()]) ?? images
   return flow[randomInt(flow.length)]
 }
 

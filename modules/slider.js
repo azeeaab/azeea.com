@@ -1,8 +1,8 @@
-import { selectedFlow } from "./rain.js"
 import { DOMElement } from './dom.js'
 import { sliderImages as slidersA } from "../aqua_dude/config.js"
 import { sliderImages as slidersB } from "../tennis_queen/config.js"
 import { sliderImages as slidersC } from "../basket_jr/config.js"
+import { selectedAvatar } from "./selected-avatar.js"
 
 const minX = 24
 const maxX = 473
@@ -11,6 +11,10 @@ const tabHalfWidth = 5
 const slider_state = {
   dragOrigin: null,
 }
+
+document.addEventListener('avatar-changed', e => {
+  selectTab(0)
+})
 
 document.addEventListener('DOMContentLoaded', () => {
   hideSearch()
@@ -56,7 +60,7 @@ export function stopDragSliderTab(e) {
 }
 
 function sliderBackground() {
-  return DOMElement.single(`#slider-${selectedFlow()}`)
+  return DOMElement.single(`#slider-${selectedAvatar()}`)
 }
 
 function sliderBoundingRect() {
