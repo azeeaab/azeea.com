@@ -22,7 +22,7 @@ video.addEventListener('timeupdate', () => {
     video.pause()
 
     for (const friend of pin.children('.friend'))
-      friend.display(friend.hasClass(e.id))
+      friend.display(friend.hasClass(currentConfig.id))
   }
 }, false);
 
