@@ -1,3 +1,10 @@
+import images from "../modules/images.js"
+export const flowImages = [
+  images.Divers,
+  images.Sailboat,
+  images.Snorkeling1,
+]
+
 export const sliderImages = {
   sliders: [ // backgrounds
     "./Graphics/slider-C0.png",

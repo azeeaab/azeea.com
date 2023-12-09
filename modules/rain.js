@@ -5,6 +5,12 @@ export const start = () => {
   displayNextImage()
 }
 
+let flowImages = []
+
+document.addEventListener('avatar-changed', e => {
+  flowImages = e.config.flowImages
+})
+
 let selectedImage = null
 const fallingImages = []
 
@@ -60,8 +66,7 @@ function createElement(image) {
 }
 
 function randomImage() {
-  const flow = (selectedAvatar() && flows[selectedAvatar()]) ?? images
-  return flow[randomInt(flow.length)]
+  return flowImages[randomInt(flowImages.length)]
 }
 
 function createImgElement() { return document.createElement('img') }

@@ -1,3 +1,12 @@
+import images from "../modules/images.js"
+export const flowImages = [
+  images.RioApe,
+  images.RioWaterfall,
+  images.RioTennisCourt,
+  images.RioTennisCourt2,
+  images.RioTukan,
+]
+
 export const sliderImages = {
   sliders: [ // backgrounds
     "./Graphics/slider-B0.png",
