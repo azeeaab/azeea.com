@@ -49,15 +49,13 @@
     <img class="friend C" src="./Graphics/FriendAvatar-C1.png">
   </div>
 
-  <script type="module">
+  <script type="module"> // TODO: argh!
 import {} from './modules/flow.js'
 import { selectAvatar } from './modules/selected-avatar.js'
 import {
   selectTab, startDragSliderTab, dragSliderTab, stopDragSliderTab,
   displaySearch, hideSearch, addSearchTerm,
 } from './modules/slider.js'
-import { mapAvatars } from './modules/config.js'
-import { start } from './modules/rain.js'
 
 window.selectTab = selectTab
 window.selectAvatar = selectAvatar
@@ -66,7 +64,11 @@ window.dragSliderTab = dragSliderTab
 window.stopDragSliderTab = stopDragSliderTab
 window.displaySearch = displaySearch
 window.hideSearch = hideSearch
-window.addSearchTerm = addSearchTerm
+  </script>
+  <script type="module">
+import { selectAvatar } from './modules/selected-avatar.js'
+import { mapAvatars } from './modules/config.js'
+import { start } from './modules/rain.js'
 
 mapAvatars({
   A: 'aqua_dude',
@@ -77,7 +79,7 @@ mapAvatars({
 selectAvatar('A')
 start()
   </script>
-  <script type="text/javascript">
+  <script type="text/javascript">// TODO: argh!
   // Configuration
 
 const images = [

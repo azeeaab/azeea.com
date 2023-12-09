@@ -59,15 +59,6 @@ function createElement(image) {
   return element
 }
 
-async function dismissImage(element) {
-  element.onmousedown = null
-  element.style.top = '150vh'
-  element.style.opacity = '0'
-  await delay(IMAGE_POSITION_TIME)
-  if (selectedImage.element !== element)
-    element.remove()
-}
-
 function randomImage() {
   const flow = (selectedAvatar() && flows[selectedAvatar()]) ?? images
   return flow[randomInt(flow.length)]
