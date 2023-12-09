@@ -1,57 +1,41 @@
 import { hideSearch, selectTab } from './slider.js'
 import { selectFlow, selectedFlow } from './rain.js'
 import { DOMElement, DOMMediaElement } from './dom.js'
+import { avatarName, config } from './config.js'
 
-import { videoConfig as videoConfigA } from '../aqua_dude/config.js'
-import { videoConfig as videoConfigB } from '../tennis_queen/config.js'
-import { videoConfig as videoConfigC } from '../basket_jr/config.js'
-const videoConfig = {
-  A: videoConfigA,
-  B: videoConfigB,
-  C: videoConfigC,
-}
-
-setSelectedAvatar('A')
-hideSearch()
+document.addEventListener('DOMContentLoaded', () => {
+  setSelectedAvatar('A')
+  hideSearch()
+})
 
 export function setSelectedAvatar(id) {
+  currentConfig = { ...config(id)?.videoConfig, id }
+
   selectFlow(id)
   selectTab(0)
   DOMElement.single('#geo-pin').hide()
 
-  const videos = DOMElement.all('video')
-  for (const vid of videos) {
-    vid.hide()
-    vid.element.pause()
-  }
-
-  const video = DOMMediaElement.single(`#video_${id}`)
-  video.display()
+  const video = DOMMediaElement.single('video')
+  video.element.src = `./${avatarName(id)}/video/approach.mp4`
   video.playFromBeginning()
 
   DOMMediaElement.single('#audio').playFromBeginning()
-
-  for (const avatar of DOMElement.all('img.avatar'))
-    avatar.hide()
-
-  DOMElement.single(`#${id}`).display()
+  DOMElement.single('#avatar').element.src = `./${avatarName(id)}/img/avatar.png`
+  DOMElement.single('#avatar').element.className = `avatar ${id}`
 }
 
-for (const [vc, cfg] of Object.entries(videoConfig)) {
-  const video = DOMMediaElement.single(`#video_${vc}`)
+const video = document.querySelector('video')
+video.addEventListener('timeupdate', () => {
+  if (video.currentTime > currentConfig.endTime) {
+    const pin = DOMElement.single('#geo-pin')
+    pin.display()
+    pin.setClass(currentConfig.id)
+    video.pause()
 
-  video.element.addEventListener('timeupdate', e => {
-    if (video.element.currentTime > cfg.endTime) {
-      const pin = DOMElement.single('#geo-pin')
-      pin.display()
-      pin.setClass(vc)
-      video.element.pause()
-
-      for (const friend of pin.children('.friend'))
-        friend.display(friend.hasClass(selectedFlow()))
-    }
-  }, false);
-}
+    for (const friend of pin.children('.friend'))
+      friend.display(friend.hasClass(selectedFlow()))
+  }
+}, false);
 
 setInterval(function bounce_pin() {
   const pin = DOMElement.single('#geo-pin__pin')
@@ -61,3 +45,5 @@ setInterval(function bounce_pin() {
   pin.setClass(direction)
   shadow.setClass(direction)
 }, 1000)
+
+let currentConfig

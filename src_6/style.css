@@ -24,15 +24,14 @@ img.hidden {
   opacity: 0;
 }
 
-img.avatar {
+#avatar {
   position: fixed;
-  display: none;
   width: 555px;
   top: 0;
   left: 0;
 }
 
-img.avatar.A {
+#avatar.A {
   width: 588px;
 }
 
