@@ -1,8 +1,4 @@
 import { DOMElement, domExport } from './dom.js'
-import { sliderImages as slidersA } from "../aqua_dude/config.js"
-import { sliderImages as slidersB } from "../tennis_queen/config.js"
-import { sliderImages as slidersC } from "../basket_jr/config.js"
-import { selectedAvatar } from "./selected-avatar.js"
 
 const minX = 24
 const maxX = 473
@@ -12,7 +8,10 @@ const slider_state = {
   dragOrigin: null,
 }
 
+let currentConfig
+
 document.addEventListener('avatar-changed', e => {
+  currentConfig = e.config.sliderImages
   selectTab(0)
 })
 
@@ -60,7 +59,7 @@ domExport(e => {
 }, 'stopDragSliderTab')
 
 function sliderBackground() {
-  return DOMElement.single(`#slider-${selectedAvatar()}`)
+  return DOMElement.single('#slider')
 }
 
 function sliderBoundingRect() {
@@ -76,9 +75,7 @@ function curtain() {
 }
 
 function selectTab(num) {
-  for (const slider of DOMElement.all('.search-panel')) {
-    slider.hide()
-  }
+  injectSlider(DOMElement.single('#slider'))
 
   const tabId = `_${num}`
   const bg = sliderBackground()
@@ -163,18 +160,14 @@ const html = `
 <div class="pill-container"></div>
 `
 
-injectSlider(DOMElement.single('#slider-A'), slidersA)
-injectSlider(DOMElement.single('#slider-B'), slidersB)
-injectSlider(DOMElement.single('#slider-C'), slidersC)
-
-function injectSlider(parent, config) {
+function injectSlider(parent) {
   parent.element.innerHTML = html
 
   for (let i = 0; i < 4; i++)
-    parent.child(`.toggle._${i}`).element.src = config.sliders[i]
-  parent.child('.search.s').element.src = config.s
-  parent.child('.search.x').element.src = config.x
-  parent.child('.search.main').element.src = config.main
+    parent.child(`.toggle._${i}`).element.src = currentConfig.sliders[i]
+  parent.child('.search.s').element.src = currentConfig.s
+  parent.child('.search.x').element.src = currentConfig.x
+  parent.child('.search.main').element.src = currentConfig.main
 }
 
 
