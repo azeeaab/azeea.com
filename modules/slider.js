@@ -1,5 +1,8 @@
 import { selectedFlow } from "./rain.js"
 import { DOMElement } from './dom.js'
+import { sliderImages as slidersA } from "../aqua_dude/config.js"
+import { sliderImages as slidersB } from "../tennis_queen/config.js"
+import { sliderImages as slidersC } from "../basket_jr/config.js"
 
 const minX = 24
 const maxX = 473
@@ -151,9 +154,9 @@ const html = `
 <div class="pill-container"></div>
 `
 
-injectSlider(DOMElement.single('#slider-A'), sliders.A)
-injectSlider(DOMElement.single('#slider-B'), sliders.B)
-injectSlider(DOMElement.single('#slider-C'), sliders.C)
+injectSlider(DOMElement.single('#slider-A'), slidersA)
+injectSlider(DOMElement.single('#slider-B'), slidersB)
+injectSlider(DOMElement.single('#slider-C'), slidersC)
 
 function injectSlider(parent, config) {
   parent.element.innerHTML = html
