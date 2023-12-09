@@ -1,4 +1,4 @@
-import { DOMElement, domExport } from './dom.js'
+import { domExport } from './dom.js'
 import { SearchChanged, searchPercentage, searchValue, setSearchValue, tabId } from './search.js'
 import { AvatarChanged } from './selected-avatar.js'
 
@@ -59,14 +59,13 @@ domExport(e => {
 
 function selectTab(num) {
   const clickedTabId = `_${num}`
-  const bg = DOMElement.single('#slider')
-  const wasSelected = bg.hasClass(clickedTabId)
+  const bg = document.querySelector('#slider')
+  const wasSelected = bg.classList.contains(clickedTabId)
 
-  bg.display()
-  bg.setClass('search-panel')
+  bg.style.display = ''
 
   const tabId = !num || wasSelected ? '_0' : clickedTabId
-  bg.addClass(tabId)
+  bg.className = `search-panel ${tabId}`
 
   placeSliderTab(searchPercentage(tabId))
   document.querySelector('#slider .mess').innerText = searchValue(tabId)
@@ -74,15 +73,15 @@ function selectTab(num) {
 domExport(selectTab, 'selectTab')
 
 domExport(() => {
-  DOMElement.single('#slider .button.s').hide()
-  DOMElement.single('#slider .button.x').display()
-  DOMElement.single('#slider .main').display()
+  document.querySelector('#slider .button.s').style.display = 'none'
+  document.querySelector('#slider .button.x').style.display = ''
+  document.querySelector('#slider .main').style.display = ''
 }, 'displaySearch')
 
 domExport(() => {
-  DOMElement.single('#slider .button.s').display()
-  DOMElement.single('#slider .button.x').hide()
-  DOMElement.single('#slider .main').hide()
+  document.querySelector('#slider .button.s').style.display = ''
+  document.querySelector('#slider .button.x').style.display = 'none'
+  document.querySelector('#slider .main').style.display = 'none'
 }, 'hideSearch')
 
 const html = `
@@ -116,12 +115,11 @@ const html = `
 function injectSlider(container) {
   container.innerHTML = html
 
-  const parent = new DOMElement(container)
   for (let i = 0; i < 4; i++)
-    parent.child(`.toggle._${i}`).element.src = currentConfig.sliders[i]
-  parent.child('.search.s').element.src = currentConfig.s
-  parent.child('.search.x').element.src = currentConfig.x
-  parent.child('.search.main').element.src = currentConfig.main
+    container.querySelector(`.toggle._${i}`).src = currentConfig.sliders[i]
+  container.querySelector('.search.s').src = currentConfig.s
+  container.querySelector('.search.x').src = currentConfig.x
+  container.querySelector('.search.main').src = currentConfig.main
 }
 
 domExport(term => {

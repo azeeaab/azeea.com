@@ -107,11 +107,6 @@ button.avatar.C {
   top: 70px;
   left: 0;
   width: 450px;
-  display: none;
-}
-
-.search-panel .search.button.x {
-  display: none;
 }
 
 video {
@@ -130,7 +125,6 @@ video {
 
 .search-panel .slider {
   max-width: 100%;
-  display: none;
 }
 
 .search-panel .tab {
@@ -184,17 +178,6 @@ video {
   color: white;
 }
 
-.search-panel .toggle {
-  display: none;
-}
-
-.search-panel._0 .toggle._0,
-.search-panel._1 .toggle._1,
-.search-panel._2 .toggle._2,
-.search-panel._3 .toggle._3 {
-  display: revert;
-}
-
 .search-panel>.value._1 {
   left: 137px;
 }
@@ -221,10 +204,6 @@ video {
 
 #geo-pin.far {
   transform: scale(20%);
-}
-
-#geo-pin__pin img {
-  display: initial;
 }
 
 #geo-pin__pin {
@@ -277,13 +256,6 @@ video {
   img.landscape {
     width: 100%;
     height: auto;
-  }
-
-  img.avatar,
-  img.friend,
-  #geo-pin,
-  video {
-    display: none;
   }
 }
 
