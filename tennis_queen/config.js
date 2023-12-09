@@ -20,3 +20,9 @@ export const sliderImages = {
 }
 
 export const videoConfig = { endTime: 15 }
+
+export const pinStyle = {
+  height: 200,
+  bottom: -10,
+  transform: 'translateX(-30%)',
+}

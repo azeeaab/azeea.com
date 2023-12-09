@@ -223,15 +223,7 @@ video {
   transform: scale(20%);
 }
 
-#geo-pin__A,
-#geo-pin__B,
-#geo-pin__C {
-  display: none;
-}
-
-#geo-pin.A #geo-pin__A,
-#geo-pin.B #geo-pin__B,
-#geo-pin.C #geo-pin__C {
+#geo-pin__pin img {
   display: initial;
 }
 
