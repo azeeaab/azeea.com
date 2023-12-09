@@ -1,10 +1,13 @@
 import { FallingImageElement } from "./falling-image.js"
 
-let selectedImage = null
-const fallingImages = []
-setTimeout(displayNextImage, 10)
+export const start = () => {
+  displayNextImage()
+}
 
-var flowName
+let selectedImage = null
+let flowName
+const fallingImages = []
+
 export function selectedFlow() { return flowName }
 export function selectFlow(name) { flowName = name }
 
