@@ -13,7 +13,7 @@ let currentConfig
 
 document.addEventListener('avatar-changed', e => {
   currentConfig = e.config.sliderImages
-  injectSlider(DOMElement.single('#slider'))
+  injectSlider(document.querySelector('#slider'))
   selectTab(0)
 })
 
@@ -22,17 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.addEventListener('search-changed', ({ state, value, percentage }) => {
-  const bg = sliderBackground()
-  const valueLabel = bg.child(`.value.${tabId(state)}`)
-  if (valueLabel) valueLabel.element.innerText = value
-  mess().element.innerText = value
+  const valueLabel = document.querySelector(`#slider .value.${tabId(state)}`)
+  if (valueLabel) valueLabel.innerText = value
+  document.querySelector('#slider .mess').innerText = value
   placeSliderTab(percentage)
 })
 
 function placeSliderTab(loc) {
   const x = loc * (maxX - minX) + minX
-  tab().element.style.left = `${x}px`
-  curtain().element.style.width = `${Math.max(0, x - minX - 2)}px`
+  document.querySelector('#slider .tab').style.left = `${x}px`
+  document.querySelector('#slider .curtain').style.width = `${Math.max(0, x - minX - 2)}px`
 }
 
 domExport(e => {
@@ -45,7 +44,7 @@ domExport(e => {
   if (!slider_state.dragOrigin) return
 
   const {pageX} = e
-  const elementX = pageX - sliderBoundingRect().x - tabHalfWidth
+  const elementX = pageX - document.querySelector('#slider').getBoundingClientRect().x - tabHalfWidth
 
   const clampedX = Math.min(Math.max(elementX, minX), maxX)
   const value = (clampedX - minX) / (maxX - minX)
@@ -57,25 +56,9 @@ domExport(e => {
   e.target.releasePointerCapture(e.pointerId)
 }, 'stopDragSliderTab')
 
-function sliderBackground() {
-  return DOMElement.single('#slider')
-}
-
-function sliderBoundingRect() {
-  return sliderBackground().element.getBoundingClientRect()
-}
-
-function tab() {
-  return sliderBackground().child('.tab')
-}
-
-function curtain() {
-  return sliderBackground().child('.curtain')
-}
-
 function selectTab(num) {
   const clickedTabId = `_${num}`
-  const bg = sliderBackground()
+  const bg = DOMElement.single('#slider')
   const wasSelected = bg.hasClass(clickedTabId)
 
   bg.display()
@@ -85,37 +68,21 @@ function selectTab(num) {
   bg.addClass(tabId)
 
   placeSliderTab(searchPercentage(tabId))
-  mess().element.innerText = searchValue(tabId)
+  document.querySelector('#slider .mess').innerText = searchValue(tabId)
 }
 domExport(selectTab, 'selectTab')
 
 domExport(() => {
-  searchSButton().hide()
-  searchXButton().display()
-  searchMainArea().display()
+  DOMElement.single('#slider .button.s').hide()
+  DOMElement.single('#slider .button.x').display()
+  DOMElement.single('#slider .main').display()
 }, 'displaySearch')
 
 domExport(() => {
-  searchSButton().display()
-  searchXButton().hide()
-  searchMainArea().hide()
+  DOMElement.single('#slider .button.s').display()
+  DOMElement.single('#slider .button.x').hide()
+  DOMElement.single('#slider .main').hide()
 }, 'hideSearch')
-
-function searchSButton() {
-  return sliderBackground().child('.button.s')
-}
-
-function searchXButton() {
-  return sliderBackground().child('.button.x')
-}
-
-function searchMainArea() {
-  return sliderBackground().child('.main')
-}
-
-function mess() {
-  return sliderBackground().child('.mess')
-}
 
 const html = `
 <img class="slider toggle _0">
@@ -139,15 +106,16 @@ const html = `
 <img class="search button x" onclick="hideSearch()">
 <img class="search main">
 
-<form onsubmit="addSearchTerm(this.querySelectorAll('input')[0].value); return false">
+<form onsubmit="addSearchTerm(this.querySelector('input').value); return false">
   <input>
 </form>
 <div class="pill-container"></div>
 `
 
-function injectSlider(parent) {
-  parent.element.innerHTML = html
+function injectSlider(container) {
+  container.innerHTML = html
 
+  const parent = new DOMElement(container)
   for (let i = 0; i < 4; i++)
     parent.child(`.toggle._${i}`).element.src = currentConfig.sliders[i]
   parent.child('.search.s').element.src = currentConfig.s
@@ -163,5 +131,5 @@ domExport(term => {
     element.onclick = null
     element.remove()
   }
-  sliderBackground().child('.pill-container').element.appendChild(element)
+  document.querySelector('#slider .pill-container').appendChild(element)
 }, 'addSearchTerm')
