@@ -1,6 +1,7 @@
 import { DOMElement, DOMMediaElement } from './dom.js'
+import { AvatarChanged } from './selected-avatar.js';
 
-document.addEventListener('avatar-changed', e => {
+document.addEventListener(AvatarChanged, e => {
   const video = DOMMediaElement.single('video')
   video.element.src = `./${e.avatarName}/video/approach.mp4`
   video.playFromBeginning()

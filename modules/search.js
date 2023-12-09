@@ -52,9 +52,11 @@ export const property = tabId => {
   }
 }
 
+export const SearchChanged = 'search-changed'
+
 class StateChangedEvent extends Event {
   constructor(state, percentage, value) {
-    super('search-changed')
+    super(SearchChanged)
     this.state = state
     this.percentage = percentage
     this.value = value

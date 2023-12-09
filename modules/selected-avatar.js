@@ -14,9 +14,11 @@ domExport(selectAvatar, 'selectAvatar')
 
 let selectedId
 
+export const AvatarChanged = 'avatar-changed'
+
 class AvatarChangedEvent extends Event {
   constructor(id, avatarName, config) {
-    super('avatar-changed')
+    super(AvatarChanged)
     this.id = id
     this.avatarName = avatarName
     this.config = config

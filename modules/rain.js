@@ -1,4 +1,5 @@
 import { FallingImageElement } from "./falling-image.js"
+import { AvatarChanged } from "./selected-avatar.js"
 
 export const start = () => {
   displayNextImage()
@@ -6,7 +7,7 @@ export const start = () => {
 
 let flowImages = []
 
-document.addEventListener('avatar-changed', e => {
+document.addEventListener(AvatarChanged, e => {
   flowImages = e.config.flowImages
 })
 

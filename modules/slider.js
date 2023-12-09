@@ -1,5 +1,6 @@
 import { DOMElement, domExport } from './dom.js'
-import { searchPercentage, searchValue, setSearchValue, tabId } from './search.js'
+import { SearchChanged, searchPercentage, searchValue, setSearchValue, tabId } from './search.js'
+import { AvatarChanged } from './selected-avatar.js'
 
 const minX = 24
 const maxX = 473
@@ -11,7 +12,7 @@ const slider_state = {
 
 let currentConfig
 
-document.addEventListener('avatar-changed', e => {
+document.addEventListener(AvatarChanged, e => {
   currentConfig = e.config.sliderImages
   injectSlider(document.querySelector('#slider'))
   selectTab(0)
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   hideSearch()
 })
 
-document.addEventListener('search-changed', ({ state, value, percentage }) => {
+document.addEventListener(SearchChanged, ({ state, value, percentage }) => {
   const valueLabel = document.querySelector(`#slider .value.${tabId(state)}`)
   if (valueLabel) valueLabel.innerText = value
   document.querySelector('#slider .mess').innerText = value
