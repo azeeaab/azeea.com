@@ -1,8 +1,12 @@
 import images from "../modules/images.js"
 export const flowImages = [
-  images.Divers,
-  images.Sailboat,
-  images.Snorkeling1,
+  images.NYStreetball1,
+  images.NYStreetball2,
+  images.NYStreetball5,
+  images.NYStreetball7,
+  images.NYStreetball14,
+  images.NYStreetball18,
+  images.NYStreetball19,
 ]
 
 export const sliderImages = {

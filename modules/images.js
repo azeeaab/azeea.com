@@ -253,5 +253,100 @@ export default {
     src: './DummyGraphics/RioWaterfall.png',
     width: 1962,
     height: 1382,
+  },
+  NYStreetball1: {
+    src: './DummyGraphics/NYStreetball1.png',
+    width: 2106,
+    height: 1466,
+  },
+  NYStreetball2: {
+    src: './DummyGraphics/NYStreetball2.png',
+    width: 1564,
+    height: 1738,
+  },
+  NYStreetball3: {
+    src: './DummyGraphics/NYStreetball3.png',
+    width: 4079,
+    height: 2301,
+  },
+  NYStreetball4: {
+    src: './DummyGraphics/NYStreetball4.png',
+    width: 1934,
+    height: 1366,
+  },
+  NYStreetball5: {
+    src: './DummyGraphics/NYStreetball5.png',
+    width: 2028,
+    height: 1346,
+  },
+  NYStreetball6: {
+    src: './DummyGraphics/NYStreetball6.png',
+    width: 1864,
+    height: 1366,
+  },
+  NYStreetball7: {
+    src: './DummyGraphics/NYStreetball7.png',
+    width: 2518,
+    height: 1402,
+  },
+  NYStreetball8: {
+    src: './DummyGraphics/NYStreetball8.png',
+    width: 1934,
+    height: 1270,
+  },
+  NYStreetball9: {
+    src: './DummyGraphics/NYStreetball9.png',
+    width: 2442,
+    height: 1314,
+  },
+  NYStreetball10: {
+    src: './DummyGraphics/NYStreetball10.png',
+    width: 2054,
+    height: 1402,
+  },
+  NYStreetball11: {
+    src: './DummyGraphics/NYStreetball11.png',
+    width: 2180,
+    height: 1282,
+  },
+  NYStreetball12: {
+    src: './DummyGraphics/NYStreetball12.png',
+    width: 2278,
+    height: 1516,
+  },
+  NYStreetball13: {
+    src: './DummyGraphics/NYStreetball13.png',
+    width: 2722,
+    height: 1356,
+  },
+  NYStreetball14: {
+    src: './DummyGraphics/NYStreetball14.png',
+    width: 2688,
+    height: 1624,
+  },
+  NYStreetball15: {
+    src: './DummyGraphics/NYStreetball15.png',
+    width: 2244,
+    height: 1428,
+  },
+  NYStreetball16: {
+    src: './DummyGraphics/NYStreetball16.png',
+    width: 2338,
+    height: 1364,
+  },
+  NYStreetball17: {
+    src: './DummyGraphics/NYStreetball17.png',
+    width: 3116,
+    height: 1122,
+  },
+  NYStreetball18: {
+    src: './DummyGraphics/NYStreetball18.png',
+    width: 3328,
+    height: 1234,
+  },
+  NYStreetball19: {
+    src: './DummyGraphics/NYStreetball19.png',
+    width: 1996,
+    height: 1796,
   }
 }
