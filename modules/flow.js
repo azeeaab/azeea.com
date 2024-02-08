@@ -41,10 +41,6 @@ setInterval(function bounce_pin() {
 
 let currentConfig
 
-export const playGotVideo = () => {
-  playVideo('aqua_dude', 'goteborg.mp4');
-}
-
 const playVideo = (avatarName, filename) => {
   const video = document.querySelector('video');
   video.src = `./${avatarName}/video/${filename}`;

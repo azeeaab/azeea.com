@@ -1,11 +1,13 @@
 import * as aqua_dude from '../aqua_dude/config.js'
 import * as tennis_queen from '../tennis_queen/config.js'
 import * as basket_jr from '../basket_jr/config.js'
+import * as blank from '../blank/config.js'
 
 const avatarConfigs = {
   aqua_dude,
   tennis_queen,
   basket_jr,
+  blank,
 }
 
 export const mapAvatars = newMapping => {
