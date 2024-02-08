@@ -10,6 +10,7 @@
   <img id="avatar">
   <video id="video"></video>
   <audio id="audio" src="516_full_disco-beach_0145.mp3"></audio>
+  <button onclick="playGotVideo()" class="if A"></button>
   <button onclick="selectAvatar('A')" class="avatar A"></button>
   <button onclick="selectAvatar('B')" class="avatar B"></button>
   <button onclick="selectAvatar('C')" class="avatar C"></button>
@@ -34,6 +35,9 @@
 import { selectAvatar } from './modules/selected-avatar.js'
 import { mapAvatars } from './modules/config.js'
 import { start } from './modules/rain.js'
+import { playGotVideo } from './modules/flow.js'
+
+window.playGotVideo = playGotVideo
 
 mapAvatars({
   A: 'aqua_dude',

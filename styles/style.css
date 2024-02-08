@@ -64,6 +64,15 @@ button.avatar.C {
   top: 140px;
 }
 
+button.if {
+  width: 180px;
+  height: 180px;
+  position: absolute;
+  top: 50px;
+  background-color: transparent;
+  border-radius: 30px;
+}
+
 .search-panel button {
   position: absolute;
   background-color: transparent;

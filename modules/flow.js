@@ -1,10 +1,7 @@
 import { AvatarChanged } from './selected-avatar.js';
 
 document.addEventListener(AvatarChanged, e => {
-  const video = document.querySelector('video')
-  video.src = `./${e.avatarName}/video/approach.mp4`
-  video.currentTime = 0
-  video.play()
+  playVideo(e.avatarName, 'approach.mp4');
 
   document.querySelector('#audio').play()
   document.querySelector('#avatar').src = `./${e.avatarName}/img/avatar.png`
@@ -43,3 +40,14 @@ setInterval(function bounce_pin() {
 }, 1000)
 
 let currentConfig
+
+export const playGotVideo = () => {
+  playVideo('aqua_dude', 'goteborg.mp4');
+}
+
+const playVideo = (avatarName, filename) => {
+  const video = document.querySelector('video');
+  video.src = `./${avatarName}/video/${filename}`;
+  video.currentTime = 0;
+  video.play();
+}
