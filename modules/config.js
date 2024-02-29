@@ -13,7 +13,7 @@ const avatarConfigs = {
 export const mapAvatars = newMapping => {
   const set = unknownNames(newMapping)
   if (set.size !== 0)
-    throw new Error(`Unknown avatar(s): '${set}'`)
+    throw new Error('Unknown avatar(s): ', set)
 
   mapping = newMapping
 }
